@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "feat/01-costa-neon",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-19T21:38:00Z",
+  "updated_at": "2026-11-19T21:40:06Z",
   "items": [
     {
       "task_id": "01-01",
@@ -22,7 +22,7 @@
       "task_id": "01-05",
       "title": "feat-01-05-guia-e-prompt — Guia de ilustração e CLI prompt (6 modos, com semente)",
       "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-05-guia-e-prompt.md",
-      "status": "queued",
+      "status": "review_pending",
       "rules": [
         "ARQ-06",
         "SEG-01",
@@ -30,7 +30,7 @@
         "TST-03"
       ],
       "skills_used": [],
-      "attempts": 0
+      "attempts": 1
     },
     {
       "task_id": "01-06",

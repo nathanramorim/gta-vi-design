@@ -8,6 +8,7 @@
 Uso:
   uv run costa_neon.py tokens build [--checar]
   uv run costa_neon.py validar [caminhos...] [--json]
+  uv run costa_neon.py prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
 """
@@ -20,7 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from cn import css, validar  # noqa: E402
+from cn import css, prompt, validar  # noqa: E402
 from cn import tokens as tk  # noqa: E402
 from cn.entrada import ErroDados  # noqa: E402
 
@@ -54,6 +55,22 @@ def cmd_validar(a: argparse.Namespace) -> int:
     return 2 if problemas else 0
 
 
+def cmd_prompt(a: argparse.Namespace) -> int:
+    var = tk.carregar()["variaveis"]
+    variaveis = {"SISTEMA": var["SISTEMA"], "MARCA": a.marca or var["MARCA"], "CIDADE": a.cidade or var["CIDADE"],
+                 "IDIOMA": a.idioma or var["IDIOMA"], "FORMATO": var["FORMATO"]}
+    fixos = {k: getattr(a, k) for k in ("pose", "roupa", "lugar", "hora", "lado", "arquetipo", "idade", "corpo", "cabelo", "acessorio", "pessoa")}
+    r = prompt.montar(a.modo, variaveis=variaveis, fixos=fixos, semente=a.semente, foto_autorizada=a.foto_autorizada,
+                      tipo=a.tipo, tema=a.tema, descricao=a.descricao, formato=a.formato)
+    if a.json:
+        print(json.dumps({"ok": True, **r.__dict__}, ensure_ascii=False))
+        return 0
+    print(r.texto)
+    for nota in ([f"semente: {r.semente}"] if r.semente is not None else []) + ([f"montagem: {r.montagem}"] if r.montagem else []) + r.avisos:
+        print(nota, file=sys.stderr)
+    return 0
+
+
 def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="costa_neon.py", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="comando", required=True)
@@ -65,6 +82,18 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("caminhos", nargs="*")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_validar)
+    p = sub.add_parser("prompt", help="monta o prompt de imagem ou o roteiro de texto (6 modos)")
+    p.add_argument("--modo", type=int, required=True, choices=range(1, 7))
+    p.add_argument("--semente", type=int)
+    p.add_argument("--formato")
+    for nome in ("marca", "cidade", "idioma", "pose", "roupa", "lugar", "hora", "lado", "arquetipo", "idade", "corpo", "cabelo", "acessorio", "pessoa"):
+        p.add_argument(f"--{nome}")
+    p.add_argument("--foto-autorizada", action="store_true", help="modo 2: a pessoa da foto autorizou, é adulta e não é figura pública")
+    p.add_argument("--tipo", help="modo 5: lettering, rotulo, sinopse, menu, dica ou descricao")
+    p.add_argument("--tema", help="modo 6: loading, capa, post, story, divisor ou encerramento")
+    p.add_argument("--descricao", help="modo 6: a cena")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_prompt)
     return ap
 
 

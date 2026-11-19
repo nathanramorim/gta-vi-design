@@ -1,0 +1,8 @@
+{
+  "loading": {"tema": "Loading screen illustration", "formato": "16:9", "montagem": "Loading: ilustração de ponta a ponta entre as barras; bloco de informação no canto inferior esquerdo sobre degradê escuro, com o emblema de {MARCA} (19% da largura), título em caixa alta e sinopse de até 46 caracteres por linha."},
+  "capa": {"tema": "Cover art", "formato": "16:9", "montagem": "Capa 16:9: personagem à direita, título display à esquerda, linha neon abaixo do título."},
+  "post": {"tema": "Square social post illustration", "formato": "1:1", "montagem": "Post 1:1: as barras viram faixas de 7% no topo e na base; uma ideia por peça."},
+  "story": {"tema": "Vertical story illustration", "formato": "9:16", "montagem": "Story 9:16: personagem de corpo inteiro, título no terço superior, chamada para ação no rodapé no formato de dica de botão."},
+  "divisor": {"tema": "Section divider illustration", "formato": "16:9", "montagem": "Divisor de seção: gradiente sunset, silhuetas (palmeiras, torre de praia, pássaros) e título gigante condensado."},
+  "encerramento": {"tema": "Closing screen illustration", "formato": "16:9", "montagem": "Encerramento: fundo lilás, faixa de praia em ondas ciano e creme, flamingos magenta, título display com contorno grosso na tinta."}
+}
