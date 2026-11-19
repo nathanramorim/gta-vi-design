@@ -1,0 +1,184 @@
+{
+ "kicker": "// C4 · nível 2 · contêineres (proposta)",
+ "titulo": "Tudo nasce do tokens.json; o resto é gerado por script",
+ "largura": 1280,
+ "altura": 600,
+ "elementos": [
+  {
+   "tipo": "caixa",
+   "id": "g",
+   "x": 232,
+   "y": 152,
+   "w": 768,
+   "h": 432,
+   "texto": "repositório costa-neon",
+   "estilo": "grupo"
+  },
+  {
+   "tipo": "caixa",
+   "id": "ia",
+   "x": 56,
+   "y": 208,
+   "w": 144,
+   "h": 44,
+   "texto": "pessoa ou IA",
+   "estilo": "pill"
+  },
+  {
+   "tipo": "caixa",
+   "id": "sk",
+   "x": 264,
+   "y": 192,
+   "w": 216,
+   "h": 76,
+   "texto": "skill costa-neon",
+   "sub": "plugin, só chama scripts",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "cli",
+   "x": 560,
+   "y": 192,
+   "w": 232,
+   "h": 76,
+   "texto": "CLI costa_neon.py",
+   "sub": "Python via uv",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "tk",
+   "x": 256,
+   "y": 320,
+   "w": 712,
+   "h": 76,
+   "texto": "tokens.json",
+   "sub": "fonte única",
+   "estilo": "destaque"
+  },
+  {
+   "tipo": "caixa",
+   "id": "o1",
+   "x": 256,
+   "y": 472,
+   "w": 136,
+   "h": 76,
+   "texto": "CSS",
+   "sub": "e fundamentos",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "o2",
+   "x": 400,
+   "y": 472,
+   "w": 136,
+   "h": 76,
+   "texto": "componentes",
+   "sub": "4 estados",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "o3",
+   "x": 544,
+   "y": 472,
+   "w": 136,
+   "h": 76,
+   "texto": "telas 1–8",
+   "sub": "PNG 1920x1080",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "o4",
+   "x": 688,
+   "y": 472,
+   "w": 136,
+   "h": 76,
+   "texto": "prompts",
+   "sub": "6 modos",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "o5",
+   "x": 832,
+   "y": 472,
+   "w": 136,
+   "h": 76,
+   "texto": "temas",
+   "sub": "um por consumidor",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "cs",
+   "x": 1064,
+   "y": 472,
+   "w": 160,
+   "h": 76,
+   "texto": "consumidores",
+   "sub": "carrossel, vídeo, README, Forge",
+   "estilo": "apagado"
+  },
+  {
+   "tipo": "seta",
+   "de": "ia.dir",
+   "para": "sk.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "sk.dir",
+   "para": "cli.esq",
+   "forma": "horizontal",
+   "rotulo": "chama"
+  },
+  {
+   "tipo": "seta",
+   "de": "cli.baixo",
+   "para": "tk.cima:0.59",
+   "forma": "vertical",
+   "rotulo": "lê"
+  },
+  {
+   "tipo": "seta",
+   "de": "tk.baixo:0.0955",
+   "para": "o1.cima",
+   "forma": "vertical"
+  },
+  {
+   "tipo": "seta",
+   "de": "tk.baixo:0.298",
+   "para": "o2.cima",
+   "forma": "vertical"
+  },
+  {
+   "tipo": "seta",
+   "de": "tk.baixo:0.5",
+   "para": "o3.cima",
+   "forma": "vertical"
+  },
+  {
+   "tipo": "seta",
+   "de": "tk.baixo:0.702",
+   "para": "o4.cima",
+   "forma": "vertical"
+  },
+  {
+   "tipo": "seta",
+   "de": "tk.baixo:0.904",
+   "para": "o5.cima",
+   "forma": "vertical"
+  },
+  {
+   "tipo": "seta",
+   "de": "o5.dir",
+   "para": "cs.esq",
+   "forma": "horizontal"
+  }
+ ],
+ "nota_rodape": "scripts: tokens build · validar · render telas · prompt · tema"
+}

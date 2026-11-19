@@ -108,6 +108,7 @@ Como chegam: baixadas do fontsource (jsDelivr) uma vez para `~/.cache/costa-neon
 7. **Arquitetura proposta:** render HTML -> PNG no Chrome local (ADR-0004) e plugin/skill `costa-neon` com temas por consumidor (ADR-0005). Aprova?
 8. **Ilustração na v0.1:** formas vetoriais próprias nas telas (recomendado) ou já usar imagens geradas por IA a partir do `prompt`? Se IA, qual gerador?
 9. **Ordem:** tudo (features 01 a 07) ou primeiro o mínimo útil (01 tokens, 05 prompt, 06 temas) para atender a Edição Missões rápido?
+10. **Licença do repositório:** ainda não há `LICENSE`. MIT como no carrossel-studio, outra, ou nenhuma enquanto for privado?
 
 ## Dono
 Nathan (produto e direção de arte). Construção pelo fluxo Forge SDD.

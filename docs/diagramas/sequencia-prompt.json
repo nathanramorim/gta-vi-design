@@ -1,0 +1,124 @@
+{
+ "kicker": "// fluxo · modo 3, personagem aleatório",
+ "titulo": "A IA monta o prompt de imagem com um script, sem inventar",
+ "largura": 1280,
+ "altura": 360,
+ "elementos": [
+  {
+   "tipo": "caixa",
+   "id": "a",
+   "x": 56,
+   "y": 120,
+   "w": 160,
+   "h": 88,
+   "texto": "pedido",
+   "sub": "\"um personagem\"",
+   "estilo": "pill"
+  },
+  {
+   "tipo": "caixa",
+   "id": "b",
+   "x": 256,
+   "y": 120,
+   "w": 160,
+   "h": 88,
+   "texto": "IA escolhe",
+   "sub": "modo 3 + variáveis",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "c",
+   "x": 456,
+   "y": 120,
+   "w": 160,
+   "h": 88,
+   "texto": "prompt",
+   "sub": "--modo 3 --semente 7",
+   "estilo": "destaque"
+  },
+  {
+   "tipo": "caixa",
+   "id": "d",
+   "x": 656,
+   "y": 120,
+   "w": 160,
+   "h": 88,
+   "texto": "monta",
+   "sub": "BLOCO DE ESTILO + receita",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "e",
+   "x": 856,
+   "y": 120,
+   "w": 160,
+   "h": 88,
+   "texto": "gerador",
+   "sub": "com a pessoa, sem texto",
+   "estilo": "tracejado"
+  },
+  {
+   "tipo": "caixa",
+   "id": "f",
+   "x": 1056,
+   "y": 120,
+   "w": 168,
+   "h": 88,
+   "texto": "montagem",
+   "sub": "texto e interface depois",
+   "estilo": "normal"
+  },
+  {
+   "tipo": "caixa",
+   "id": "x",
+   "x": 456,
+   "y": 264,
+   "w": 160,
+   "h": 56,
+   "texto": "recusa",
+   "sub": "nome de obra existente",
+   "estilo": "tracejado"
+  },
+  {
+   "tipo": "seta",
+   "de": "a.dir",
+   "para": "b.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "b.dir",
+   "para": "c.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "c.dir",
+   "para": "d.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "d.dir",
+   "para": "e.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "e.dir",
+   "para": "f.esq",
+   "forma": "horizontal"
+  },
+  {
+   "tipo": "seta",
+   "de": "c.baixo",
+   "para": "x.cima",
+   "forma": "vertical",
+   "estilo": "fraca",
+   "rotulo": "código 2"
+  }
+ ],
+ "nota_rodape": "mesma semente, mesmo prompt · sorteio varia gênero, etnia e idade"
+}

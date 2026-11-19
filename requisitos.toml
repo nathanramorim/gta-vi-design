@@ -1,0 +1,147 @@
+# Requisitos do costa-neon (motor requisitos-para-ia v0.1.0, vendorizado em scripts/; origem no skills.lock).
+# Hoje (discovery) só há o motor e a documentação: uv para rodar o motor, e git/gh para clonar o
+# repositório privado. Chrome, fontes e pacotes Python entram quando as features 01, 02 e 04 existirem.
+# Rode da raiz: sh scripts/bootstrap.sh (macOS e Linux) ou
+# powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1 (Windows)
+versao = 1
+
+[projeto]
+nome = "costa-neon"
+script = "scripts/requisitos.py"
+repo = "nathanramorim/costa-neon"
+
+[[requisito]]
+id = "uv"
+descricao = "Gerencia o Python e as dependências (você não usa pip)"
+tipo = "programa"
+obrigatorio = true
+checar = { comando = ["uv", "--version"], versao_minima = "0.8", procurar_em = ["{home}/.local/bin", "{home}/.cargo/bin"] }
+  [[requisito.receita]]
+  quando = { sistema = "macos", gerenciador = "brew" }
+  comandos = [["brew", "install", "uv"]]
+  nota = "Homebrew é só um atalho; sem ele, o bootstrap.sh usa o instalador oficial."
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "pacman" }
+  comandos = [["pacman", "-S", "uv"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "dnf" }
+  comandos = [["dnf", "install", "uv"]]
+  nota = "Fedora 40+; nas outras distros, use o bootstrap.sh."
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "winget" }
+  comandos = [["winget", "install", "--id", "astral-sh.uv", "-e"]]
+  nota = "O winget pergunta a você o aceite dos termos. Abra outro terminal depois."
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "scoop" }
+  comandos = [["scoop", "install", "uv"]]
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "choco" }
+  comandos = [["choco", "install", "uv"]]
+  admin = true
+  nota = "O choco precisa de um terminal de administrador."
+  [[requisito.receita]]
+  quando = { sistema = "windows" }
+  manual = "Rode: powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1; ele mostra o instalador oficial e só instala com o seu ok."
+  path = ["{home}/.local/bin"]
+  [[requisito.receita]]
+  manual = "Rode: sh scripts/bootstrap.sh; ele mostra o instalador oficial (sem sudo) e só instala com o seu ok."
+  path = ["{home}/.local/bin"]
+
+
+[[requisito]]
+id = "git"
+descricao = "Clona o repositório (o gh usa o git)"
+tipo = "programa"
+obrigatorio = false
+checar = { comando = ["git", "--version"], versao_minima = "2.0" }
+  [[requisito.receita]]
+  quando = { sistema = "macos", gerenciador = "brew" }
+  comandos = [["brew", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "macos" }
+  manual = "Rode você: xcode-select --install (a licença das ferramentas da Apple é aceita por você) ou instale de https://git-scm.com."
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "apt" }
+  comandos = [["apt-get", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "dnf" }
+  comandos = [["dnf", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "pacman" }
+  comandos = [["pacman", "-S", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "zypper" }
+  comandos = [["zypper", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux" }
+  manual = "Instale o git pelo gerenciador da sua distro."
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "winget" }
+  comandos = [["winget", "install", "--id", "Git.Git", "-e"]]
+  nota = "O winget pergunta a você o aceite dos termos. Abra outro terminal depois."
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "scoop" }
+  comandos = [["scoop", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "choco" }
+  comandos = [["choco", "install", "git"]]
+  [[requisito.receita]]
+  quando = { sistema = "windows" }
+  manual = "Instale o Git for Windows de https://git-scm.com/download/win (o instalador pergunta a você)."
+
+[[requisito]]
+id = "gh"
+descricao = "GitHub CLI: clona o repositório privado e instala o plugin"
+tipo = "programa"
+obrigatorio = false
+depende_de = ["git"]
+checar = { comando = ["gh", "--version"], versao_regex = "gh version (\\d+\\.\\d+\\.\\d+)" }
+  [[requisito.receita]]
+  quando = { sistema = "macos", gerenciador = "brew" }
+  comandos = [["brew", "install", "gh"]]
+  [[requisito.receita]]
+  quando = { sistema = "macos", gerenciador = "port" }
+  comandos = [["port", "install", "gh"]]
+  admin = true
+  [[requisito.receita]]
+  quando = { sistema = "macos" }
+  manual = "Baixe o instalador .pkg do macOS em https://github.com/cli/cli/releases/latest e abra você (sem Homebrew)."
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "apt" }
+  comandos = [["apt-get", "install", "gh"]]
+  nota = "Ubuntu 22.04+ e Debian 12+ têm o pacote gh; para a versão mais nova, use o repositório oficial (https://github.com/cli/cli/blob/trunk/docs/install_linux.md)."
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "dnf" }
+  comandos = [["dnf", "install", "gh"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "pacman" }
+  comandos = [["pacman", "-S", "github-cli"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux", gerenciador = "zypper" }
+  comandos = [["zypper", "install", "gh"]]
+  [[requisito.receita]]
+  quando = { sistema = "linux" }
+  manual = "Instale o gh pelo guia oficial: https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "winget" }
+  comandos = [["winget", "install", "--id", "GitHub.cli", "-e"]]
+  nota = "O winget pergunta a você o aceite dos termos. Abra outro terminal depois."
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "scoop" }
+  comandos = [["scoop", "install", "gh"]]
+  [[requisito.receita]]
+  quando = { sistema = "windows", gerenciador = "choco" }
+  comandos = [["choco", "install", "gh"]]
+  [[requisito.receita]]
+  quando = { sistema = "windows" }
+  manual = "Baixe o instalador .msi em https://github.com/cli/cli/releases/latest e abra você."
+
+[[requisito]]
+id = "acesso-github"
+descricao = "Login no GitHub com acesso a este repositório privado"
+tipo = "pessoa"
+obrigatorio = false
+depende_de = ["gh"]
+checar = { comando = ["gh", "auth", "status"] }
+  [[requisito.receita]]
+  manual = "Rode você: gh auth login (e gh auth setup-git). A conta precisa ter acesso ao repositório; a IA nunca digita a sua senha nem o token."
