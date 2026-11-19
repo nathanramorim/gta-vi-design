@@ -5,7 +5,8 @@ import re
 from pathlib import Path
 
 SKILL = Path(__file__).resolve().parents[2]
-RE_HEX = re.compile(r"#[0-9A-Fa-f]{6}")
+HEX = r"#[0-9A-Fa-f]{6}"  # padrão único do hex de 6 dígitos (DUP-04)
+RE_HEX = re.compile(HEX)
 RE_TEXTO = re.compile(r"[\w ,.'’:()/&-]*")
 FORMATOS = ("16:9", "1:1", "9:16")
 

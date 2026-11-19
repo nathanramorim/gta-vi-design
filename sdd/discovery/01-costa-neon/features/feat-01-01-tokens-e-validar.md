@@ -18,6 +18,8 @@ ADR-0001 (fonte única), ADR-0002 (Pricedown e nomes bloqueados), ADR-0003 (uv, 
 | Validação de cor na borda | carrossel-studio `marca.py` (`RE_COR`) | regex `#RRGGBB` | reusar o padrão | mesma regra de entrada |
 | Layout de plugin com motor na skill | carrossel-studio `plugins/carrossel-studio/skills/gerar-carrossel/` | scripts dentro da skill | reusar o padrão | plugin instalado funciona sozinho |
 
+Base para as tasks seguintes: `entrada.texto`, `entrada.formato`, `entrada.pasta_saida` e `tokens.paradas` nascem aqui e são usadas (e testadas) pela 01-05 e pela 01-06.
+
 ## Dependências novas
 Nenhuma de runtime. Dev: `pytest`, `ruff` (grupo `dev` do `pyproject.toml`).
 

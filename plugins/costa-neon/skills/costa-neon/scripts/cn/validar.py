@@ -12,6 +12,7 @@ from pathlib import Path
 
 from cn import termos
 from cn import tokens as tk
+from cn.entrada import HEX, RE_HEX
 
 ALVOS_PADRAO = ("tokens", "fundamentos", "componentes", "telas", "ilustracao", "temas", "plugins", "README.md")
 EXTENSOES = {".css", ".html", ".svg", ".json", ".md", ".txt", ".frag", ".py"}
@@ -25,7 +26,7 @@ RE_RGB = re.compile(r"rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})")
 RE_PRETO = re.compile(r"(?::\s*|=\s*\")black\b|rgba?\(\s*0\s*,\s*0\s*,\s*0\b", re.IGNORECASE)
 RE_SOMBRA = re.compile(r"(?:box-shadow|text-shadow)\s*:\s*([^;}\"]+)|drop-shadow\(((?:[^()]|\([^()]*\))*)\)", re.IGNORECASE)
 RE_STROKE_TEXTO = re.compile(r"-webkit-text-stroke(?:-color)?\s*:\s*([^;}\"]+)", re.IGNORECASE)
-RE_STROKE_SVG = re.compile(r"\bstroke\s*[=:]\s*\"?\s*(#[0-9A-Fa-f]{6}|rgba?\([^)]*\))", re.IGNORECASE)
+RE_STROKE_SVG = re.compile(rf"\bstroke\s*[=:]\s*\"?\s*({HEX}|rgba?\([^)]*\))", re.IGNORECASE)
 RE_SOMBRA_JSON = re.compile(r"\"sombras\"\s*:\s*\{(.*?)\n\s{0,4}\}", re.DOTALL)
 
 
@@ -42,9 +43,8 @@ class Problema:
 
 def _rgb(cor: str) -> tuple[int, int, int] | None:
     cor = cor.strip()
-    if m := re.fullmatch(r"#([0-9A-Fa-f]{6})", cor):
-        h = m.group(1)
-        return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))  # type: ignore[return-value]
+    if RE_HEX.fullmatch(cor):
+        return tuple(int(cor[i:i + 2], 16) for i in (1, 3, 5))  # type: ignore[return-value]
     if m := RE_RGB.search(cor):
         return tuple(int(x) for x in m.groups())  # type: ignore[return-value]
     return None
@@ -69,8 +69,8 @@ def _camadas(valor: str) -> list[str]:
 
 def _sombra(camada: str) -> str | None:
     """None se a camada está ok; senão o motivo."""
-    cor = re.search(r"#[0-9A-Fa-f]{6}|rgba?\([^)]*\)", camada)
-    numeros = re.findall(r"(-?\d*\.?\d+)(?:px)?\b", RE_RGB.sub("", re.sub(r"#[0-9A-Fa-f]{6}", "", camada)))
+    cor = re.search(rf"{HEX}|rgba?\([^)]*\)", camada)
+    numeros = re.findall(r"(-?\d*\.?\d+)(?:px)?\b", RE_RGB.sub("", RE_HEX.sub("", camada)))
     if len(numeros) >= 2 and float(numeros[0]) == 0 and float(numeros[1]) == 0:
         return None  # brilho centrado (neon), na mesma cor
     if not cor:
@@ -110,7 +110,7 @@ def conferir_texto(nome: str, texto: str, sufixo: str, t: dict, permitidos: set[
                 if motivo := _sombra(camada):
                     add(pos, "sombra", motivo)
         for m in RE_STROKE_TEXTO.finditer(texto):
-            cor = re.search(r"#[0-9A-Fa-f]{6}", m.group(1))
+            cor = RE_HEX.search(m.group(1))
             if not cor or cor.group(0).upper() != tinta:
                 add(m.start(), "contorno", f"contorno de texto deve ser a tinta {tinta}")
         for m in RE_STROKE_SVG.finditer(texto):

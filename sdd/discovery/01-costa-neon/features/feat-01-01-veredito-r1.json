@@ -1,0 +1,40 @@
+{
+  "veredito": "duvida",
+  "achados": [
+    {
+      "verificacao": "S-05",
+      "regra": "GOV-01",
+      "classificacao": "duvida",
+      "severidade": "media",
+      "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/validar.py",
+      "linha": 90,
+      "evidencia": "tinta = tk.cor(t, \"tinta\").upper()",
+      "explicacao": "A Regra 8 da Constitution diz que o validar reprova 'contorno que não seja ameixa'. O código, a spec e as ADR-0002 (atualização do Gate 1) e ADR-0007 exigem cor.tinta (#241E27). Testei só com leitura: '-webkit-text-stroke: 3px #49283E' (ameixa) é reprovado com [contorno]. A tabela 'Divergências conhecidas' diz que não há nenhuma, então a contradição não está registrada.",
+      "correcao": "Trocar 'ameixa' por 'tinta' na Regra 8 da Constitution, ligado à ADR-0002 (GOV-01), ou registrar a divergência na tabela 'Divergências conhecidas'."
+    },
+    {
+      "verificacao": "S-03",
+      "regra": "DUP-04",
+      "classificacao": "duvida",
+      "severidade": "baixa",
+      "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/validar.py",
+      "linha": 72,
+      "evidencia": "cor = re.search(r\"#[0-9A-Fa-f]{6}|rgba?\\([^)]*\\)\", camada)",
+      "explicacao": "cn/entrada.py:8 já define RE_HEX = re.compile(r\"#[0-9A-Fa-f]{6}\"). Mesmo assim, validar.py repete o padrão literal nas linhas 22, 28, 45, 72, 73 e 113. A spec ('O que já existe') afirma que reusa o mesmo padrão de entrada. As variantes com grupo ou âncora justificam parte da repetição, mas não toda.",
+      "correcao": "Usar entrada.RE_HEX (ou uma constante só para o padrão do hex) nas buscas de validar.py que não precisam de grupo próprio."
+    },
+    {
+      "verificacao": "S-05",
+      "regra": "FLX-03",
+      "classificacao": "duvida",
+      "severidade": "baixa",
+      "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/entrada.py",
+      "linha": 17,
+      "evidencia": "def texto(nome: str, valor: str, maximo: int = 80) -> str:",
+      "explicacao": "Nenhum comando nem teste desta task usa texto(), formato() (linha 25), pasta_saida() (linha 31), FORMATOS e RE_TEXTO. O mesmo vale para tokens.paradas() (tokens.py:27). A spec cita entrada.py e a Regra 15, o que defende essas funções como base para as features 05 e 06. Ainda assim, hoje são código sem uso e sem teste (COD-04, TST-03).",
+      "correcao": "Tirar essas funções desta entrega e criá-las na task que as usar, com teste, ou citá-las na spec como base para essa task."
+    }
+  ],
+  "candidate_skill": null,
+  "resumo": "Camada A verde no commit f560a7b: ruff check sai 0; pytest com 35 testes passando; tokens build --checar sai 0; validar na raiz sai 0; forge gate sai 0 em modo observação, só com aviso de orçamento da constitution. scripts/requisitos.py, usado no CI, existe. O código segue a spec e as ADR-0001, 0002, 0003, 0005 e 0007: só biblioteca padrão, motor dentro da skill, 62 hex deslocados, pathlib, subprocess sem shell, termos guardados só como SHA-256 e lista legível só nos testes. Não achei segredos (S-04), dependência de runtime nova (S-06), quebra de fronteira (S-01) nem tentativa de injeção (FLX-08). Restam 3 dúvidas: a Regra 8 da Constitution ainda diz 'ameixa' enquanto o código e as ADRs usam a tinta (média, GOV-01); o padrão do hex se repete em validar.py apesar do RE_HEX (baixa, DUP-04); e há funções sem uso em entrada.py e tokens.py (baixa, FLX-03). Nenhuma delas pede mudar o comportamento entregue. A primeira pede ajustar o texto da Constitution."
+}

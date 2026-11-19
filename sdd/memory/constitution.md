@@ -44,7 +44,7 @@ Consulte `sdd/memory/mcps.md` para o status real de cada MCP configurado (`ativo
 5. Foto de pessoa só com autorização dela, só adultos, sem figuras públicas; a autorização é declaração da pessoa, nunca do agente. (`SEG-05`)
 6. Secrets em `.env` ou cofre seguro — nunca no repositório. (`SEG-04`)
 7. Antes de usar lib externa, consultar context7 com versão exata — se `sdd/memory/mcps.md` o listar como `ativo`; se `indisponível`, usar a documentação oficial da lib. (`SEG-07`)
-8. Fonte única: `tokens.json` é a casa de cada valor; CSS, temas e telas são gerados. `validar` reprova hex fora do `tokens.json` (paleta deslocada, ADR-0007), sombra que não seja roxa ou azul, contorno que não seja ameixa e tela sem barras e linha neon. (`DUP-04`, `TST-01`)
+8. Fonte única: `tokens.json` é a casa de cada valor; CSS, temas e telas são gerados. `validar` reprova hex fora do `tokens.json` (paleta deslocada, ADR-0007), sombra que não seja roxa ou azul, contorno que não seja a tinta (`cor.tinta`, ADR-0002) e tela sem barras e linha neon. (`DUP-04`, `TST-01`)
 9. Python só via `uv` (nunca `pip`); `uv run ruff check` e `uv run pytest` passam após cada task; funciona em macOS, Linux e Windows (`pathlib`, sem shell, sem caminho fixo). (`COD-02`, `TST-01`, `SEG-03`)
 10. Dependências de runtime mínimas e com versão fixa. (`ARQ-04`)
 11. Conferência visual obrigatória: toda tela, prancha ou diagrama é renderizado e o agente olha a imagem antes de entregar. Fontes só abertas (OFL ou Apache), baixadas do fontsource uma vez para `~/.cache/costa-neon/fontes` (ou `COSTA_NEON_CACHE`). (`TST-01`, `ARQ-03`)
