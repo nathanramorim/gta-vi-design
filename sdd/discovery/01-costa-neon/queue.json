@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "feat/01-costa-neon",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-19T21:49:19Z",
+  "updated_at": "2026-11-19T21:52:23Z",
   "items": [
     {
       "task_id": "01-01",
@@ -46,7 +46,7 @@
       "task_id": "01-06",
       "title": "feat-01-06-temas-e-plugin — Temas por consumidor e plugin costa-neon",
       "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-06-temas-e-plugin.md",
-      "status": "review_pending",
+      "status": "approved",
       "rules": [
         "ARQ-06",
         "TST-02",
@@ -56,54 +56,9 @@
       "skills_used": [],
       "attempts": 1,
       "governance_verdict": {
-        "veredito": "duvida",
-        "achados": [
-          {
-            "verificacao": "S-05",
-            "regra": "ARQ-06",
-            "classificacao": "duvida",
-            "severidade": "media",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/temas.py",
-            "linha": 29,
-            "evidencia": "\"fontes\": dict(FONTES_MARCA), \"logo\": \"marca/logo.svg\"}",
-            "explicacao": "O README (linha 95) manda colocar o tema video em `conteudo/`. No gerador-videos, override._logo_valido resolve o logo com projeto.seguro(valor), que monta `self.raiz / relativo`, e raiz é a raiz do projeto, não `conteudo/`. Quem copiar `.video-marca.json` e `marca/logo.svg` para `conteudo/` perde o logo sem aviso, porque detectar devolve logo=None. Ao contrário do carrossel e do readme, o consumidor de vídeo não tem teste de contrato (ADR-0005 pede testes de contrato; TST-02).",
-            "correcao": "Dizer no README e na SKILL onde fica cada arquivo do tema video (json em `conteudo/`, logo em `marca/logo.svg` na raiz do projeto) ou ajustar o caminho do logo, e acrescentar um teste de contrato com override.detectar, pulado quando o gerador-videos não existir na máquina."
-          },
-          {
-            "verificacao": "S-03",
-            "regra": "DUP-04",
-            "classificacao": "duvida",
-            "severidade": "media",
-            "arquivo": "docs/img/ilustracao.svg.frag",
-            "linha": 2,
-            "evidencia": "\u003clinearGradient id=\"cnceu\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"\u003e\u003cstop offset=\"0\" stop-color=\"#343F9C\"/\u003e",
-            "explicacao": "O fragmento de ilustração do banner recebeu à mão os hex deslocados dos tokens. O `tema readme` não gera esse arquivo e o test_banner_do_readme_usa_o_tema não o cobre. As paradas (0/.3/.55/.8/1) também diferem das que tk.paradas produziria. A spec diz que o banner passa a usar o `tema readme`, e a Regra 3 e a ADR-0001 proíbem cópia manual de valores. O `validar` só aprova porque os hex estão na lista permitida; nada impede que eles divirjam dos tokens depois.",
-            "correcao": "Gerar o fragmento de ilustração a partir dos tokens (no `tema readme` ou em um gerador próprio) e cobri-lo com um teste de igualdade, como já é feito com identidade.json e logo.svg.frag."
-          },
-          {
-            "verificacao": "S-03",
-            "regra": "DUP-04",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/temas.py",
-            "linha": 82,
-            "evidencia": "stops = \"\".join(f'\u003cstop offset=\"{i / (len(neon) - 1):.2f}\" stop-color=\"{c}\"/\u003e' for i, c in enumerate(neon))",
-            "explicacao": "O gerador de paradas de degradê SVG repete o lambda `passos` de logo.py:13. Além disso, FONTES_MARCA (temas.py:16) fixa os nomes 'Oswald', 'Josefin Sans' e 'JetBrains Mono', que já existem em tipografia.familias do tokens.json. É a segunda ocorrência, então ainda não pede Auto-Skill.",
-            "correcao": "Expor um helper único de paradas SVG (em logo.py ou tokens.py) para os dois usos e ler as fontes do arquivo de marca de fam[\"hud\"|\"texto\"|\"mono\"][\"fonte\"]."
-          },
-          {
-            "verificacao": "S-06",
-            "regra": "SEG-03",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "tests/test_temas.py",
-            "linha": 12,
-            "evidencia": "CARROSSEL = Path.home() / \"git\" / \"carrossel-studio\"",
-            "explicacao": "Os testes de contrato esperam os consumidores em `~/git/\u003crepo\u003e`, e a Regra 9 pede código sem caminho fixo. A spec permite pular o teste quando o consumidor não está na máquina, e o skip informa o motivo. Por isso fica só como dúvida baixa: em outra máquina ou no CI, o contrato não é verificado e o teste não falha.",
-            "correcao": "Aceitar o caminho do consumidor por variável de ambiente (ex.: COSTA_NEON_CARROSSEL), com `~/git` como padrão."
-          }
-        ],
-        "resumo": "Avaliei a task 01-06 no commit e9117f0, numa cópia limpa feita com git archive. Camada A verde: ruff check sem erros; pytest com 61 testes passando, sem skip (o contrato com carrossel-studio e readme-studio foi de fato executado); `validar` responde 'ok: nada fora do Costa Neon'; `tokens build --checar` responde em dia; `tema todos --saida /tmp/... --previa` sai 0 e grava os 12 arquivos esperados; verificar_readme.py README.md diz 'requisitos: ok'; `claude plugin validate .` e `claude plugin validate plugins/costa-neon` passam; forge gate sai 0 (conferido sem pipe), só com o aviso P-24 de orçamento da constitution, que já existia. Olhei a prévia do forge-sdd renderizada: emblema próprio, nome, linha neon e amostras das 5 missões. O que bate com a spec e as ADRs: temas.py e logo.py sem estado; só biblioteca padrão (ADR-0003/0005); motor dentro da skill; valores tirados dos tokens (ADR-0001); emblema próprio, um sol listrado (ADR-0002); `--validar` não grava (ARQ-05, com teste); `--saida` que é arquivo sai 2 (SEG-01, com teste); escrita só sob `--saida` (SEG-02); a skill só chama os scripts; o banner usa identidade.json e logo.svg.frag gerados pelo `tema readme`, com teste de igualdade. Os pareceres anteriores da 01-01 registrados no diff (queue.json e veredito r2) são registro da esteira. Restam dúvidas, nenhuma violação: (1) média: o caminho do logo do tema video não funciona se o usuário seguir o README e copiar tudo para `conteudo/`, e não há teste de contrato com o gerador-videos; (2) média: docs/img/ilustracao.svg.frag tem hex dos tokens copiados à mão, fora do `tema readme`; (3) baixa: o gerador de paradas SVG e os nomes de fonte estão repetidos; (4) baixa: os testes de contrato dependem de `~/git`. Observação sem achado: `gerar` sobrescreve arquivos já existentes em `--saida` sem aviso. Isso é aceitável para pasta de saída, mas vale citar no --help. S-01: fronteiras ok. S-02: o 'O que já existe' é honesto. S-04: nenhum segredo. S-06: nenhuma dependência de runtime nova. S-07: nenhum padrão chega à terceira repetição. FLX-08: nenhuma instrução embutida na spec, no diff nem no commit."
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Task 01-06, rodada 2, avaliada no commit d2f2617 (árvore limpa). Camada A verde. ruff check sem erros. pytest passa os 62 testes sem nenhum skip, então os contratos com carrossel-studio, readme-studio e gerador-videos rodaram de verdade. `validar` responde 'ok: nada fora do Costa Neon' e `tokens build --checar` responde 'em dia'. `tema todos --saida /tmp/cn-r2 --previa` sai 0 e grava 13 arquivos: conteudo/.video-marca.json, conteudo/marca/logo.svg e ilustracao.svg.frag, além dos anteriores e das 4 prévias. verificar_readme.py README.md responde 'requisitos: ok', `claude plugin validate .` passa e forge gate sai 0, só com o aviso P-24 da constitution, que já existia. Os achados da r1 foram resolvidos assim. (1) ARQ-06/TST-02: o tema video grava `conteudo/.video-marca.json` com logo `conteudo/marca/logo.svg`, relativo à raiz do projeto. Isso bate com override.ARQUIVOS e com Projeto.seguro (raiz / relativo), e seguro não depende do índice que ignora `conteudo`. O README, a SKILL e o --help dizem que `--saida` = raiz. Há um teste de contrato que roda override.detectar no ambiente do gerador-videos, via subprocess `uv run --directory`, sem trazer dependência nova; ele confere o logo e as cores. (2) DUP-04 da ilustração: o novo banner.py gera `ilustracao.svg.frag` a partir dos tokens (tk.paradas e tk.cor). O `tema readme` passou a emitir esse arquivo, docs/img/ilustracao.svg.frag é igual ao gerado e há um teste de igualdade. (3) Existe um helper único, logo.paradas_svg, usado por logo.py, temas.previa e banner.py. As fontes do arquivo de marca vêm de tipografia.familias (hud/texto/mono). (4) Os caminhos dos consumidores nos testes vêm de COSTA_NEON_CARROSSEL, COSTA_NEON_README_STUDIO e COSTA_NEON_GERADOR_VIDEOS, com ~/git como padrão. A sobrescrita foi documentada no --help e na SKILL. Observações sem achado: o motivo de skip do teste do readme ainda cita só '~/git' e não a variável; a legenda do banner mudou para 'tokens · validar · prompt · temas', mais fiel aos comandos; o alias local `c = lambda n: tk.cor(t, n)` aparece 3 vezes em temas.py e 1 em banner.py, mas é só um apelido trivial, não uma regra, constante ou template, então não justifica Auto-Skill; o registro do parecer r1 em queue.json, veredito-r1.json e history.md é registro da esteira. S-01: fronteiras ok, motor dentro da skill e só biblioteca padrão (ADR-0003/0005). S-02: o 'O que já existe' é honesto. S-03: nenhuma duplicação nova de valor. S-04: nenhum segredo. S-05: dentro da spec. S-06: nenhum acoplamento de runtime novo. S-07: nenhuma candidata. FLX-08: nenhuma instrução embutida na spec, no diff nem no commit."
       }
     }
   ]
