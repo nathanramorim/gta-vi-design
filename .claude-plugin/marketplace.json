@@ -1,0 +1,14 @@
+{
+  "name": "costa-neon",
+  "description": "Design system replicável de pôr do sol tropical e neon: tokens, validador, prompts de imagem e temas para outras ferramentas.",
+  "owner": {
+    "name": "costa-neon"
+  },
+  "plugins": [
+    {
+      "name": "costa-neon",
+      "source": "./plugins/costa-neon",
+      "description": "Tokens, validador, prompts de imagem e temas do design system Costa Neon."
+    }
+  ]
+}

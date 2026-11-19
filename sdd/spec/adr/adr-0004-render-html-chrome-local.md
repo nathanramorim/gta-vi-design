@@ -1,7 +1,7 @@
 # ADR-0004: Telas e pranchas renderizadas de HTML para PNG no Chrome local
 
 - **Data:** 2026-11-19
-- **Status:** `proposto`
+- **Status:** `aprovado` (Gate 1, 2026-11-19)
 - **Regras afetadas (IDs da constitution):** `ARQ-04`, Regra 11
 - **Autor / Responsável:** dono do repositório
 
@@ -13,7 +13,7 @@ As 8 telas precisam sair em PNG 1920x1080 com fontes reais, desfoque e brilho. O
 2. **HTML/CSS com os tokens, PNG pelo Chrome local (Playwright):** o mesmo CSS serve de documentação e de imagem.
 
 ## Decisão
-Opção 2, a confirmar no Gate 1. Versão do Playwright fixada na feature 04.
+Opção 2, aprovada no Gate 1. Versão do Playwright fixada na feature 04.
 
 ## Consequências
 - **Positivas:** fidelidade; reúso do caminho do carrossel-studio.

@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "skills": [
+    {
+      "nome": "requisitos-para-ia",
+      "repo": "nathanramorim/requisitos-para-ia",
+      "ref": "v0.1.0",
+      "modo": "copia",
+      "destinos": [
+        {
+          "origem": "scripts/requisitos.py",
+          "destino": "scripts/requisitos.py"
+        },
+        {
+          "origem": "scripts/bootstrap.sh",
+          "destino": "scripts/bootstrap.sh"
+        },
+        {
+          "origem": "scripts/bootstrap.ps1",
+          "destino": "scripts/bootstrap.ps1"
+        }
+      ],
+      "commit": "93abe08895a7e4db3dc032da4ec2ef43bf318766",
+      "arquivos": {
+        "scripts/requisitos.py": "8e7dcfa147148e6bb069d02512a98174c69225a3e08080bb13090a8b6f863f64",
+        "scripts/bootstrap.sh": "583897668b8046affcae501b02be6fa04313c614b5713be66aec3ff906baec5a",
+        "scripts/bootstrap.ps1": "49645fdcbb5619d122cf79e8f254c9b65c1271dd2a30f74a3c23600effe35464"
+      }
+    }
+  ]
+}

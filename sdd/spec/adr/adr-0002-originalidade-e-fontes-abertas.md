@@ -6,7 +6,7 @@
 - **Autor / Responsável:** dono do repositório
 
 ## Contexto
-O universo do Costa Neon lembra um gênero conhecido (mundo aberto em cidade costeira ao pôr do sol). O prompt original sugere "Pricedown Black" como display padrão; essa fonte é fortemente associada ao logotipo de uma série de jogos existente. HUD, radar, estrelas de alerta, dinheiro e rodas de seleção e de rádio são convenções do gênero, mas a disposição exata e a iconografia de um jogo específico não são nossas. A paleta do prompt é quase igual, hex a hex, à medida de um conceito de fã publicado com todos os direitos reservados (registrado na discovery 0001).
+O universo do Costa Neon lembra um gênero conhecido (mundo aberto em cidade costeira ao pôr do sol). O prompt original sugere "Pricedown Black" como display padrão; essa fonte é fortemente associada ao logotipo de uma série de jogos existente. HUD, radar, estrelas de alerta, dinheiro e rodas de seleção e de rádio são convenções do gênero, mas a disposição exata e a iconografia de um jogo específico não são nossas. A paleta do prompt é quase igual, hex a hex, à medida de um conceito de fã publicado com todos os direitos reservados (registrado na discovery 01).
 
 ## Opções Consideradas
 1. **Seguir o prompt ao pé da letra (Pricedown padrão):** fiel ao texto, mas associa o sistema a marca de terceiros e a uma fonte sem licença aberta clara.
@@ -24,4 +24,11 @@ Opção 2.
 ## Consequências
 - **Positivas:** uso comercial e público sem risco de marca; fontes redistribuíveis.
 - **Negativas / Trade-offs:** Bowlby One não tem o mesmo desenho do letreiro de referência (é intencional).
-- **Ações de acompanhamento:** `validar` reprova "Pricedown" em tokens, CSS e docs (exceto o prompt literal e esta ADR); revisão de PI por peça.
+- **Ações de acompanhamento:** `validar` reprova "Pricedown" e nomes de obras existentes só nos artefatos distribuídos (`tokens/`, `fundamentos/`, `componentes/`, `telas/`, `ilustracao/`, `temas/`, `plugins/`, `README.md`), nunca em `sdd/` nem no `docs/prompt-diretor-de-arte.md`; revisão de PI por peça.
+
+## Atualização do Gate 1 (2026-11-19)
+- Bowlby One confirmada como display padrão; Pricedown fora de tudo (resposta 2).
+- "Contorno preto" do prompt vira `cor.tinta` do `tokens.json` (resposta 4).
+- Ilustrações da v0.1: só formas vetoriais próprias; nada de imagem gerada por IA dentro do repositório (resposta 8).
+- A lista de nomes de obras existentes vai para a skill só como hash SHA-256 (`dados/termos-bloqueados.txt`); a lista legível fica nos testes.
+- A paleta também foi deslocada (ADR-0007).

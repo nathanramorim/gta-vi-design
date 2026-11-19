@@ -11,17 +11,18 @@
 | Testes | pytest + ruff | grupo `dev` | `TST-01`, `COD-02` |
 | DB | none | | arquivos |
 
-Hoje (discovery) só existem o motor de requisitos e a documentação; nenhuma dependência de runtime ainda.
+Os scripts usam só a biblioteca padrão; nenhuma dependência de runtime.
 
-## Layout do projeto (proposto)
+## Layout do projeto
 ```
-tokens/            costa-neon.tokens.json (fonte única) e costa-neon.css (gerado)
-scripts/           costa_neon.py (CLI: tokens build, validar, render telas, prompt, tema) e o motor de requisitos
-fundamentos/       página de amostras (HTML)
-componentes/       biblioteca com estados normal, foco, ativo, desabilitado
-telas/             8 telas de referência (HTML -> PNG 1920x1080)
-ilustracao/        guia, BLOCO DE ESTILO, receitas e listas de sorteio (dados)
-temas/             exports por consumidor (carrossel, vídeo, readme, forge-sdd)
-plugins/costa-neon/  skill replicável (proposta)
-docs/              prompt-diretor-de-arte.md, diagramas/, img/
+plugins/costa-neon/skills/costa-neon/   motor (a skill do plugin funciona sozinha, ADR-0005)
+  scripts/costa_neon.py                 CLI: tokens build, validar, tema, prompt
+  scripts/cn/                           um módulo por responsabilidade (entrada, tokens, css, validar, termos, prompt, temas, logo)
+  tokens/                               costa-neon.tokens.json (fonte única) e costa-neon.css (gerado)
+  ilustracao/                           BLOCO DE ESTILO, receitas, listas, temática, escrita, GUIA.md
+  dados/termos-bloqueados.txt           SHA-256 dos nomes de obras existentes
+scripts/                                motor de requisitos v0.1.0 (vendorizado)
+tests/                                  pytest (lista legível de termos e hex a evitar só aqui)
+docs/                                   prompt literal, diagramas, banner
+fundamentos/ componentes/ telas/        features 02, 03 e 04 (próximas ondas)
 ```

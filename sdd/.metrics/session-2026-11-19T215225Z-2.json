@@ -1,0 +1,22 @@
+{
+  "$schema": "forge-sdd/metrics/1.0",
+  "feature": "sdd/discovery/01-costa-neon/features/feat-01-06-temas-e-plugin.md",
+  "phase": "01-06",
+  "agent_path": [
+    "lider",
+    "builder",
+    "governance"
+  ],
+  "tokens_input": 60000,
+  "tokens_output": 15000,
+  "turns": 20,
+  "duration_seconds": 1500,
+  "criterio_atendido": true,
+  "model": "claude-opus-5-5",
+  "rework_lines": 0,
+  "context7_calls": 0,
+  "git_calls": 0,
+  "files_touched": null,
+  "outcome": "approved",
+  "sdd_version": "4.9.1-beta"
+}

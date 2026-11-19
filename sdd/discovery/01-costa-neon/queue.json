@@ -1,0 +1,65 @@
+{
+  "feature_id": "",
+  "branch": "feat/01-costa-neon",
+  "spec_status": "reviewed",
+  "updated_at": "2026-11-19T21:52:23Z",
+  "items": [
+    {
+      "task_id": "01-01",
+      "title": "feat-01-01-tokens-e-validar — Tokens (paleta deslocada), tokens build e validar",
+      "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-01-tokens-e-validar.md",
+      "status": "approved",
+      "rules": [
+        "DUP-04",
+        "TST-01",
+        "SEG-01",
+        "COD-02"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Rodada 2 da 01-01, avaliada no commit 5f47562 a partir de uma cópia limpa feita com git archive. A Camada A está verde: ruff check sem erros; pytest test_paleta, test_tokens e test_validar com 35 testes aprovados; 'costa_neon.py validar' com os alvos padrão responde 'ok: nada fora do Costa Neon'; 'tokens build --checar' responde 'costa-neon.css em dia'; forge gate sai 0, só com o aviso P-24 de orçamento da constitution, que já existia. Os três achados da r1 foram tratados. (1) GOV-01: a Regra 8 da constitution agora diz 'contorno que não seja a tinta (cor.tinta, ADR-0002)', o que bate com validar.py, com a spec e com as ADR-0002 e ADR-0007; por isso a tabela de Divergências conhecidas pode continuar vazia. (2) DUP-04: entrada.py passa a definir HEX como padrão único e RE_HEX = re.compile(HEX). validar.py importa os dois e os usa em RE_STROKE_SVG, _rgb, _sombra e no contorno de texto. Só sobram os literais de RE_HEX6 e RE_HEX3 (linhas 23 e 24), que têm lookbehind, grupo próprio e, no caso do RE_HEX3, 3 dígitos, então a diferença se justifica. A nova _rgb (RE_HEX.fullmatch e fatias 1, 3, 5) se comporta igual à anterior. (3) FLX-03: a spec agora diz que entrada.texto, entrada.formato, entrada.pasta_saida e tokens.paradas são base para a 01-05 e a 01-06, que é a segunda opção de correção dada na r1. O parecer conforme da 01-05 confirma que ela usa entrada.texto e entrada.formato. pasta_saida e paradas ficam para a 01-06. Fica uma observação sem achado: o commit de correção também registra o aprovado da 01-05 e o 01-06 'building' no queue.json; isso é registro da esteira e não muda o código da 01-01. S-01: fronteiras sem mudança. S-04: nenhum segredo. S-06: nenhuma dependência nova. S-07: nenhum padrão repetido pela terceira vez. FLX-08: nada de instrução embutida na spec nem no diff."
+      }
+    },
+    {
+      "task_id": "01-05",
+      "title": "feat-01-05-guia-e-prompt — Guia de ilustração e CLI prompt (6 modos, com semente)",
+      "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-05-guia-e-prompt.md",
+      "status": "approved",
+      "rules": [
+        "ARQ-06",
+        "SEG-01",
+        "SEG-05",
+        "TST-03"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A passou: ruff limpo, pytest com 52 testes aprovados, `validar` saiu 0 e `forge gate` sem bloqueio (só o aviso P-24 sobre o tamanho da constitution, que já existia). S-01: `cn/prompt.py` monta o texto e `costa_neon.py` só faz a CLI, a fronteira está certa. S-02 e S-03: reusa `entrada.texto`, `entrada.formato`, `entrada.SKILL`, `ErroDados` e `termos.achar` da 01-01. Os textos das seções 6 a 8 viraram dados em `ilustracao/` e não aparecem copiados no código. Não há hex repetido à mão: os cinco hex do `estilo.txt` (#241E27, #343F9C, #885DA1, #CA85A1, #FEC06E) batem com o mapa da ADR-0007 (cor.tinta e degrade.ceu[0], [2], [3] e [4]). S-04: nenhum segredo. O modo 2 exige `--foto-autorizada` e trata isso como declaração da pessoa. Nenhuma imagem gerada entrou no repositório. S-05: os seis modos, a semente determinística, a validação na borda (termos bloqueados e caracteres proibidos saem 2), o `GUIA.md` com o que fazer e evitar e o lettering em Bowlby One com contorno na tinta seguem a spec e as ADRs 0002 e 0007. Ficam três extensões pequenas ao texto do dono, coerentes com a seção 7 ('variando gênero, etnia e idade'), com o modo 6 ('loading, ..., encerramento') e com a spec: a lista `PESSOA`, as montagens de loading e encerramento e o {CIDADE} na sinopse. O modo 1 cita `tema todos --saida \u003cpasta\u003e --previa`, que ainda não existe. É uma referência adiantada, mas bate com a spec da 01-06, que pode correr em paralelo segundo o plan.md. S-06: sem dependência nova nem chamada externa. S-07: nenhum padrão repetido pela terceira vez. FLX-08: nenhuma instrução embutida na spec nem no diff. Observações de baixa relevância, que não são violação: os atributos fixos (por exemplo `--lado`) aceitam texto livre já validado na borda, sem conferir com as listas; e o teste de hex cobre os modos 2, 3 e 4, mas não o 6, que usa o mesmo bloco de estilo."
+      }
+    },
+    {
+      "task_id": "01-06",
+      "title": "feat-01-06-temas-e-plugin — Temas por consumidor e plugin costa-neon",
+      "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-06-temas-e-plugin.md",
+      "status": "approved",
+      "rules": [
+        "ARQ-06",
+        "TST-02",
+        "DUP-03",
+        "SEG-02"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Task 01-06, rodada 2, avaliada no commit d2f2617 (árvore limpa). Camada A verde. ruff check sem erros. pytest passa os 62 testes sem nenhum skip, então os contratos com carrossel-studio, readme-studio e gerador-videos rodaram de verdade. `validar` responde 'ok: nada fora do Costa Neon' e `tokens build --checar` responde 'em dia'. `tema todos --saida /tmp/cn-r2 --previa` sai 0 e grava 13 arquivos: conteudo/.video-marca.json, conteudo/marca/logo.svg e ilustracao.svg.frag, além dos anteriores e das 4 prévias. verificar_readme.py README.md responde 'requisitos: ok', `claude plugin validate .` passa e forge gate sai 0, só com o aviso P-24 da constitution, que já existia. Os achados da r1 foram resolvidos assim. (1) ARQ-06/TST-02: o tema video grava `conteudo/.video-marca.json` com logo `conteudo/marca/logo.svg`, relativo à raiz do projeto. Isso bate com override.ARQUIVOS e com Projeto.seguro (raiz / relativo), e seguro não depende do índice que ignora `conteudo`. O README, a SKILL e o --help dizem que `--saida` = raiz. Há um teste de contrato que roda override.detectar no ambiente do gerador-videos, via subprocess `uv run --directory`, sem trazer dependência nova; ele confere o logo e as cores. (2) DUP-04 da ilustração: o novo banner.py gera `ilustracao.svg.frag` a partir dos tokens (tk.paradas e tk.cor). O `tema readme` passou a emitir esse arquivo, docs/img/ilustracao.svg.frag é igual ao gerado e há um teste de igualdade. (3) Existe um helper único, logo.paradas_svg, usado por logo.py, temas.previa e banner.py. As fontes do arquivo de marca vêm de tipografia.familias (hud/texto/mono). (4) Os caminhos dos consumidores nos testes vêm de COSTA_NEON_CARROSSEL, COSTA_NEON_README_STUDIO e COSTA_NEON_GERADOR_VIDEOS, com ~/git como padrão. A sobrescrita foi documentada no --help e na SKILL. Observações sem achado: o motivo de skip do teste do readme ainda cita só '~/git' e não a variável; a legenda do banner mudou para 'tokens · validar · prompt · temas', mais fiel aos comandos; o alias local `c = lambda n: tk.cor(t, n)` aparece 3 vezes em temas.py e 1 em banner.py, mas é só um apelido trivial, não uma regra, constante ou template, então não justifica Auto-Skill; o registro do parecer r1 em queue.json, veredito-r1.json e history.md é registro da esteira. S-01: fronteiras ok, motor dentro da skill e só biblioteca padrão (ADR-0003/0005). S-02: o 'O que já existe' é honesto. S-03: nenhuma duplicação nova de valor. S-04: nenhum segredo. S-05: dentro da spec. S-06: nenhum acoplamento de runtime novo. S-07: nenhuma candidata. FLX-08: nenhuma instrução embutida na spec, no diff nem no commit."
+      }
+    }
+  ]
+}

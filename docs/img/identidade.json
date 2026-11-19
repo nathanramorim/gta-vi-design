@@ -1,0 +1,19 @@
+{
+  "fundo": "#1C171A",
+  "brilho": "#49283E",
+  "texto": "#FCFBFB",
+  "suave": "#FFCDE6",
+  "acento": [
+    "#FDBB6C",
+    "#FE7688",
+    "#E8519E"
+  ],
+  "painel": "#2D252A",
+  "borda": "#554364",
+  "terminal_fundo": "#1C171A",
+  "terminal_borda": "#554364",
+  "ok": "#89BF7C",
+  "fonte": "'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif",
+  "fonte_mono": "'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace",
+  "logo": "logo.svg.frag"
+}

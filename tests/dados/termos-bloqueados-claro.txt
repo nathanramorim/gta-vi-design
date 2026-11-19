@@ -1,0 +1,16 @@
+# Lista legível dos termos bloqueados (só nos testes). A skill guarda só o SHA-256 (ADR-0002).
+pricedown
+gtaartdeco
+grand theft auto
+gta
+gta vi
+gta 6
+vice city
+los santos
+liberty city
+san andreas
+leonida
+rockstar games
+take two
+vercetti
+miami vice

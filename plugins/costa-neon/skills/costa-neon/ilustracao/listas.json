@@ -1,0 +1,13 @@
+{
+  "ARQUETIPO": ["boat mechanic", "club promoter", "street food vendor", "retired pilot", "tattoo artist", "beach lifeguard", "stunt driver", "pawn shop owner", "radio DJ", "fishing guide", "motel manager", "street racer", "private investigator", "surf instructor"],
+  "IDADE": ["twenties", "thirties", "forties", "fifties", "sixties"],
+  "CORPO": ["slim", "athletic", "stocky", "heavyset"],
+  "CABELO": ["buzz cut", "long braids", "curly afro", "slicked back", "bleached crop", "long waves", "high ponytail", "shaved head"],
+  "ROUPA": ["open tropical shirt over a tank top", "crop top with denim shorts", "linen suit without a tie", "basketball jersey with a chain", "work coveralls tied at the waist", "retro tracksuit", "tank top with cargo pants"],
+  "ACESSORIO": ["aviator sunglasses", "backwards cap", "gold chain", "chunky wristwatch", "bandana", "hoop earrings", "phone in hand"],
+  "POSE": ["leaning on a classic car", "arms crossed", "glancing over the shoulder", "pointing at the viewer", "sitting on a boat rail", "walking toward the camera"],
+  "LUGAR": ["ocean drive with pastel art deco hotels and neon signs", "marina with sport boats", "long concrete bridge over a turquoise bay", "boat repair hangar", "neon nightclub entrance", "mangrove channel with an airboat", "beach watchtower on a wide shore", "motel parking lot with classic cars", "rooftop pool"],
+  "HORA": ["golden hour", "dusk with neon lights on", "pink sunrise", "humid night"],
+  "LADO": ["left", "right"],
+  "PESSOA": ["a woman of West African descent", "a man of South Asian descent", "a woman of East Asian descent", "a man of Latin American descent", "a nonbinary person of mixed heritage", "a woman of Middle Eastern descent", "a man of European descent", "a woman of Indigenous American descent", "a man of Caribbean descent", "a woman of Southeast Asian descent"]
+}
