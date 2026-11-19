@@ -304,6 +304,7 @@
         "fontsource": "jetbrains-mono",
         "pesos": [
           400,
+          500,
           700
         ],
         "pilha": "'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace",

@@ -1,45 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="costa-neon: Pôr do sol e neon, tudo original.">
   <defs>
     <radialGradient id="glow" cx="50%" cy="25%" r="75%">
-      <stop offset="0" stop-color="#492842" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="#171717"/>
+      <stop offset="0" stop-color="#49283E" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#1C171A"/>
     </radialGradient>
     <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#FDAA6C"/><stop offset="0.5" stop-color="#FE7693"/><stop offset="1" stop-color="#E851AB"/>
+      <stop offset="0" stop-color="#FDBB6C"/><stop offset="0.5" stop-color="#FE7688"/><stop offset="1" stop-color="#E8519E"/>
     </linearGradient>
     <linearGradient id="hex" x1="2" y1="4" x2="30" y2="28" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FDAA6C"/><stop offset="0.5" stop-color="#FE7693"/><stop offset="1" stop-color="#E851AB"/>
+      <stop offset="0" stop-color="#FDBB6C"/><stop offset="0.5" stop-color="#FE7688"/><stop offset="1" stop-color="#E8519E"/>
     </linearGradient>
     <marker id="seta" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0 0 L7 4 L0 8 Z" fill="#FE7693"/>
+      <path d="M0 0 L7 4 L0 8 Z" fill="#FE7688"/>
     </marker>
   </defs>
 
-  <rect width="1280" height="420" fill="#171717"/>
+  <rect width="1280" height="420" fill="#1C171A"/>
   <rect width="1280" height="420" fill="url(#glow)"/>
 
-  <g transform="translate(80 44) scale(1.9)"><defs><linearGradient id="cnsol" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A50B9"/><stop offset="0.3" stop-color="#894CC7"/><stop offset="0.5" stop-color="#E448C7"/><stop offset="0.7" stop-color="#F268A2"/><stop offset="1" stop-color="#E28643"/></linearGradient></defs>
-<circle cx="16" cy="16" r="13" fill="url(#cnsol)"/>
-<rect x="2" y="17" width="28" height="1.2" fill="#171717"/>
-<rect x="2" y="20.5" width="28" height="1.8" fill="#171717"/>
-<rect x="2" y="24.5" width="28" height="2.6" fill="#171717"/>
-<rect x="3" y="29.4" width="26" height="1.6" rx="0.8" fill="url(#hex)"/>
+  <g transform="translate(80 44) scale(1.9)"><defs><linearGradient id="cnlogosol" x1="0" y1="0" x2="0" y2="1"><stop offset="0.00" stop-color="#4D4AB9"/><stop offset="0.20" stop-color="#934CC7"/><stop offset="0.40" stop-color="#E448BA"/><stop offset="0.60" stop-color="#F26897"/><stop offset="0.80" stop-color="#F77B92"/><stop offset="1.00" stop-color="#E29343"/></linearGradient><linearGradient id="cnlogoneon" x1="0" y1="0" x2="1" y2="0"><stop offset="0.00" stop-color="#FBAE73"/><stop offset="0.50" stop-color="#FF8484"/><stop offset="1.00" stop-color="#EF60A2"/></linearGradient><clipPath id="cnlogofaixas"><rect x="0" y="3" width="32" height="14"/><rect x="0" y="17.6" width="32" height="2.2"/><rect x="0" y="21.4" width="32" height="1.9"/><rect x="0" y="25.1" width="32" height="1.5"/></clipPath></defs><circle cx="16" cy="15" r="12" fill="url(#cnlogosol)" clip-path="url(#cnlogofaixas)"/><rect x="4" y="28.6" width="24" height="1.8" rx="0.9" fill="url(#cnlogoneon)"/>
 </g>
-  <text x="152" y="88" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="34" fill="#FFFFFF" letter-spacing="-0.5">costa-neon</text>
-  <circle cx="86" cy="140" r="5" fill="#8FBF7C"/>
-  <text x="100" y="145" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="14" fill="#FFCDEA" letter-spacing="1.4">DESIGN SYSTEM · EM CONSTRUÇÃO</text>
-  <text x="80" y="205" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="54" fill="#ffffff" letter-spacing="-1.2">Pôr do sol e neon,</text>
-  <text x="80" y="265" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="54" fill="url(#acc)" letter-spacing="-1.2">tudo original.</text>
-  <text x="80" y="305" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="19" fill="#FFCDEA">Tokens, componentes, telas e prompts de imagem</text>
-  <text x="80" y="331" font-family="'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="19" fill="#FFCDEA">num tema único para as suas ferramentas.</text>
-  <rect x="80" y="352" width="440" height="40" rx="12" fill="#171717" stroke="#504161" stroke-width="1.2"/>
-  <text x="100" y="377" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-weight="600" font-size="16" fill="#8FBF7C">$ gh repo clone nathanramorim/costa-neon</text>
+  <text x="152" y="88" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="800" font-size="34" fill="#FCFBFB" letter-spacing="-0.5">costa-neon</text>
+  <circle cx="86" cy="140" r="5" fill="#89BF7C"/>
+  <text x="100" y="145" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="600" font-size="14" fill="#FFCDE6" letter-spacing="1.4">DESIGN SYSTEM · V0.1 EM CONSTRUÇÃO</text>
+  <text x="80" y="205" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="800" font-size="54" fill="#ffffff" letter-spacing="-1.2">Pôr do sol e neon,</text>
+  <text x="80" y="265" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="800" font-size="54" fill="url(#acc)" letter-spacing="-1.2">tudo original.</text>
+  <text x="80" y="305" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="500" font-size="19" fill="#FFCDE6">Tokens, validador, prompts de imagem e temas</text>
+  <text x="80" y="331" font-family="'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif" font-weight="500" font-size="19" fill="#FFCDE6">prontos para as suas ferramentas.</text>
+  <rect x="80" y="352" width="430" height="40" rx="12" fill="#1C171A" stroke="#554364" stroke-width="1.2"/>
+  <text x="100" y="377" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" font-weight="600" font-size="16" fill="#89BF7C">$ /plugin install costa-neon@costa-neon</text>
 
-  <rect x="760" y="62" width="480" height="318" rx="18" fill="#2B2927" stroke="#504161" stroke-width="1.5"/>
+  <rect x="760" y="62" width="480" height="318" rx="18" fill="#2D252A" stroke="#554364" stroke-width="1.5"/>
   <defs>
-  <linearGradient id="cnceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34489C"/><stop offset="0.3" stop-color="#4A50B9"/><stop offset="0.55" stop-color="#7F5DA1"/><stop offset="0.8" stop-color="#CA85A7"/><stop offset="1" stop-color="#FEAF6E"/></linearGradient>
-  <linearGradient id="cnsol2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A50B9"/><stop offset="0.25" stop-color="#894CC7"/><stop offset="0.45" stop-color="#E448C7"/><stop offset="0.65" stop-color="#F268A2"/><stop offset="0.8" stop-color="#F77B9C"/><stop offset="1" stop-color="#E28643"/></linearGradient>
-  <linearGradient id="cnneon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBA373"/><stop offset="0.5" stop-color="#FF8492"/><stop offset="1" stop-color="#EF60AE"/></linearGradient>
+  <linearGradient id="cnceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#343F9C"/><stop offset="0.3" stop-color="#4D4AB9"/><stop offset="0.55" stop-color="#885DA1"/><stop offset="0.8" stop-color="#CA85A1"/><stop offset="1" stop-color="#FEC06E"/></linearGradient>
+  <linearGradient id="cnsol2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4D4AB9"/><stop offset="0.25" stop-color="#934CC7"/><stop offset="0.45" stop-color="#E448BA"/><stop offset="0.65" stop-color="#F26897"/><stop offset="0.8" stop-color="#F77B92"/><stop offset="1" stop-color="#E29343"/></linearGradient>
+  <linearGradient id="cnneon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBAE73"/><stop offset="0.5" stop-color="#FF8484"/><stop offset="1" stop-color="#EF60A2"/></linearGradient>
   <clipPath id="cnsolc"><circle cx="1000" cy="250" r="78"/></clipPath>
   <clipPath id="cntela"><rect x="784" y="86" width="432" height="243"/></clipPath>
 </defs>
@@ -47,24 +42,24 @@
   <rect x="784" y="86" width="432" height="243" fill="url(#cnceu)"/>
   <circle cx="1000" cy="250" r="78" fill="url(#cnsol2)"/>
   <g clip-path="url(#cnsolc)">
-  <rect x="900" y="246" width="200" height="3" fill="#7F5DA1"/>
-  <rect x="900" y="258" width="200" height="5" fill="#7F5DA1"/>
-  <rect x="900" y="272" width="200" height="8" fill="#7F5DA1"/>
-  <rect x="900" y="289" width="200" height="12" fill="#7F5DA1"/>
+  <rect x="900" y="246" width="200" height="3" fill="#885DA1"/>
+  <rect x="900" y="258" width="200" height="5" fill="#885DA1"/>
+  <rect x="900" y="272" width="200" height="8" fill="#885DA1"/>
+  <rect x="900" y="289" width="200" height="12" fill="#885DA1"/>
   </g>
-  <path d="M784 300 Q850 286 920 298 T1060 296 T1216 292 L1216 329 L784 329 Z" fill="#492842"/>
-  <path d="M842 300 L846 200" stroke="#492842" stroke-width="5" fill="none"/>
-  <path d="M846 200 q-30 -4 -46 14 M846 200 q-20 -22 -44 -18 M846 200 q10 -26 36 -26 M846 200 q30 -4 44 16 M846 200 q2 -30 -10 -40" stroke="#492842" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M1150 300 L1144 180" stroke="#492842" stroke-width="5" fill="none"/>
-  <path d="M1144 180 q-30 -4 -46 14 M1144 180 q-20 -22 -44 -18 M1144 180 q10 -26 36 -26 M1144 180 q30 -4 44 16 M1144 180 q2 -30 -10 -40" stroke="#492842" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M930 150 l6 4 l6 -4 M960 138 l5 3 l5 -3 M948 166 l4 3 l4 -3" stroke="#504161" stroke-width="2" fill="none"/>
-  <rect x="784" y="86" width="432" height="22" fill="#171717"/>
-  <rect x="784" y="307" width="432" height="22" fill="#171717"/>
+  <path d="M784 300 Q850 286 920 298 T1060 296 T1216 292 L1216 329 L784 329 Z" fill="#49283E"/>
+  <path d="M842 300 L846 200" stroke="#49283E" stroke-width="5" fill="none"/>
+  <path d="M846 200 q-30 -4 -46 14 M846 200 q-20 -22 -44 -18 M846 200 q10 -26 36 -26 M846 200 q30 -4 44 16 M846 200 q2 -30 -10 -40" stroke="#49283E" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M1150 300 L1144 180" stroke="#49283E" stroke-width="5" fill="none"/>
+  <path d="M1144 180 q-30 -4 -46 14 M1144 180 q-20 -22 -44 -18 M1144 180 q10 -26 36 -26 M1144 180 q30 -4 44 16 M1144 180 q2 -30 -10 -40" stroke="#49283E" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M930 150 l6 4 l6 -4 M960 138 l5 3 l5 -3 M948 166 l4 3 l4 -3" stroke="#554364" stroke-width="2" fill="none"/>
+  <rect x="784" y="86" width="432" height="22" fill="#1C171A"/>
+  <rect x="784" y="307" width="432" height="22" fill="#1C171A"/>
   <rect x="784" y="107" width="432" height="2" fill="url(#cnneon)"/>
   <rect x="784" y="306" width="432" height="2" fill="url(#cnneon)"/>
   <rect x="1104" y="91" width="60" height="12" fill="url(#cnneon)"/>
-  <rect x="1170" y="91" width="34" height="12" rx="2" fill="#2B2927"/>
+  <rect x="1170" y="91" width="34" height="12" rx="2" fill="#2D252A"/>
 </g>
-<text x="1000" y="356" text-anchor="middle" font-size="15" fill="#FFCDEA" font-family="ui-monospace, Menlo, Consolas, monospace">tokens · componentes · telas · temas</text>
+<text x="1000" y="356" text-anchor="middle" font-size="15" fill="#FFCDE6" font-family="ui-monospace, Menlo, Consolas, monospace">tokens · componentes · telas · temas</text>
 
 </svg>

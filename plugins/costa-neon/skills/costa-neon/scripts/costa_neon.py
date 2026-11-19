@@ -8,6 +8,7 @@
 Uso:
   uv run costa_neon.py tokens build [--checar]
   uv run costa_neon.py validar [caminhos...] [--json]
+  uv run costa_neon.py tema carrossel|video|readme|forge-sdd|todos --saida <pasta> [--previa] [--validar] [--json]
   uv run costa_neon.py prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
@@ -21,9 +22,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from cn import css, prompt, validar  # noqa: E402
+from cn import css, prompt, temas, validar  # noqa: E402
 from cn import tokens as tk  # noqa: E402
-from cn.entrada import ErroDados  # noqa: E402
+from cn.entrada import ErroDados, pasta_saida  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -71,6 +72,18 @@ def cmd_prompt(a: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_tema(a: argparse.Namespace) -> int:
+    t = tk.carregar()
+    saida = pasta_saida(a.saida)
+    lista = temas.CONSUMIDORES if a.consumidor == "todos" else (a.consumidor,)
+    feitos = [str(p) for c in lista for p in temas.gerar(c, t, saida, a.previa, gravar=not a.validar)]
+    if a.json:
+        print(json.dumps({"ok": True, "validar": a.validar, "arquivos": feitos}, ensure_ascii=False))
+    else:
+        print(("seria gravado:\n" if a.validar else "ok:\n") + "\n".join(feitos))
+    return 0
+
+
 def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="costa_neon.py", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="comando", required=True)
@@ -82,6 +95,13 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("caminhos", nargs="*")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_validar)
+    p = sub.add_parser("tema", help="gera o tema de uma ferramenta consumidora")
+    p.add_argument("consumidor", choices=[*temas.CONSUMIDORES, "todos"])
+    p.add_argument("--saida", required=True, help="pasta de saída (só ela é escrita)")
+    p.add_argument("--previa", action="store_true", help="grava também previa-<consumidor>.svg para conferência visual")
+    p.add_argument("--validar", action="store_true", help="só lista o que seria gravado")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_tema)
     p = sub.add_parser("prompt", help="monta o prompt de imagem ou o roteiro de texto (6 modos)")
     p.add_argument("--modo", type=int, required=True, choices=range(1, 7))
     p.add_argument("--semente", type=int)

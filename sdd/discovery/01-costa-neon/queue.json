@@ -2,13 +2,13 @@
   "feature_id": "",
   "branch": "feat/01-costa-neon",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-19T21:42:21Z",
+  "updated_at": "2026-11-19T21:44:55Z",
   "items": [
     {
       "task_id": "01-01",
       "title": "feat-01-01-tokens-e-validar — Tokens (paleta deslocada), tokens build e validar",
       "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-01-tokens-e-validar.md",
-      "status": "review_pending",
+      "status": "approved",
       "rules": [
         "DUP-04",
         "TST-01",
@@ -18,43 +18,9 @@
       "skills_used": [],
       "attempts": 1,
       "governance_verdict": {
-        "veredito": "duvida",
-        "achados": [
-          {
-            "verificacao": "S-05",
-            "regra": "GOV-01",
-            "classificacao": "duvida",
-            "severidade": "media",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/validar.py",
-            "linha": 90,
-            "evidencia": "tinta = tk.cor(t, \"tinta\").upper()",
-            "explicacao": "A Regra 8 da Constitution diz que o validar reprova 'contorno que não seja ameixa'. O código, a spec e as ADR-0002 (atualização do Gate 1) e ADR-0007 exigem cor.tinta (#241E27). Testei só com leitura: '-webkit-text-stroke: 3px #49283E' (ameixa) é reprovado com [contorno]. A tabela 'Divergências conhecidas' diz que não há nenhuma, então a contradição não está registrada.",
-            "correcao": "Trocar 'ameixa' por 'tinta' na Regra 8 da Constitution, ligado à ADR-0002 (GOV-01), ou registrar a divergência na tabela 'Divergências conhecidas'."
-          },
-          {
-            "verificacao": "S-03",
-            "regra": "DUP-04",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/validar.py",
-            "linha": 72,
-            "evidencia": "cor = re.search(r\"#[0-9A-Fa-f]{6}|rgba?\\([^)]*\\)\", camada)",
-            "explicacao": "cn/entrada.py:8 já define RE_HEX = re.compile(r\"#[0-9A-Fa-f]{6}\"). Mesmo assim, validar.py repete o padrão literal nas linhas 22, 28, 45, 72, 73 e 113. A spec ('O que já existe') afirma que reusa o mesmo padrão de entrada. As variantes com grupo ou âncora justificam parte da repetição, mas não toda.",
-            "correcao": "Usar entrada.RE_HEX (ou uma constante só para o padrão do hex) nas buscas de validar.py que não precisam de grupo próprio."
-          },
-          {
-            "verificacao": "S-05",
-            "regra": "FLX-03",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/entrada.py",
-            "linha": 17,
-            "evidencia": "def texto(nome: str, valor: str, maximo: int = 80) -\u003e str:",
-            "explicacao": "Nenhum comando nem teste desta task usa texto(), formato() (linha 25), pasta_saida() (linha 31), FORMATOS e RE_TEXTO. O mesmo vale para tokens.paradas() (tokens.py:27). A spec cita entrada.py e a Regra 15, o que defende essas funções como base para as features 05 e 06. Ainda assim, hoje são código sem uso e sem teste (COD-04, TST-03).",
-            "correcao": "Tirar essas funções desta entrega e criá-las na task que as usar, com teste, ou citá-las na spec como base para essa task."
-          }
-        ],
-        "resumo": "Camada A verde no commit f560a7b: ruff check sai 0; pytest com 35 testes passando; tokens build --checar sai 0; validar na raiz sai 0; forge gate sai 0 em modo observação, só com aviso de orçamento da constitution. scripts/requisitos.py, usado no CI, existe. O código segue a spec e as ADR-0001, 0002, 0003, 0005 e 0007: só biblioteca padrão, motor dentro da skill, 62 hex deslocados, pathlib, subprocess sem shell, termos guardados só como SHA-256 e lista legível só nos testes. Não achei segredos (S-04), dependência de runtime nova (S-06), quebra de fronteira (S-01) nem tentativa de injeção (FLX-08). Restam 3 dúvidas: a Regra 8 da Constitution ainda diz 'ameixa' enquanto o código e as ADRs usam a tinta (média, GOV-01); o padrão do hex se repete em validar.py apesar do RE_HEX (baixa, DUP-04); e há funções sem uso em entrada.py e tokens.py (baixa, FLX-03). Nenhuma delas pede mudar o comportamento entregue. A primeira pede ajustar o texto da Constitution."
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Rodada 2 da 01-01, avaliada no commit 5f47562 a partir de uma cópia limpa feita com git archive. A Camada A está verde: ruff check sem erros; pytest test_paleta, test_tokens e test_validar com 35 testes aprovados; 'costa_neon.py validar' com os alvos padrão responde 'ok: nada fora do Costa Neon'; 'tokens build --checar' responde 'costa-neon.css em dia'; forge gate sai 0, só com o aviso P-24 de orçamento da constitution, que já existia. Os três achados da r1 foram tratados. (1) GOV-01: a Regra 8 da constitution agora diz 'contorno que não seja a tinta (cor.tinta, ADR-0002)', o que bate com validar.py, com a spec e com as ADR-0002 e ADR-0007; por isso a tabela de Divergências conhecidas pode continuar vazia. (2) DUP-04: entrada.py passa a definir HEX como padrão único e RE_HEX = re.compile(HEX). validar.py importa os dois e os usa em RE_STROKE_SVG, _rgb, _sombra e no contorno de texto. Só sobram os literais de RE_HEX6 e RE_HEX3 (linhas 23 e 24), que têm lookbehind, grupo próprio e, no caso do RE_HEX3, 3 dígitos, então a diferença se justifica. A nova _rgb (RE_HEX.fullmatch e fatias 1, 3, 5) se comporta igual à anterior. (3) FLX-03: a spec agora diz que entrada.texto, entrada.formato, entrada.pasta_saida e tokens.paradas são base para a 01-05 e a 01-06, que é a segunda opção de correção dada na r1. O parecer conforme da 01-05 confirma que ela usa entrada.texto e entrada.formato. pasta_saida e paradas ficam para a 01-06. Fica uma observação sem achado: o commit de correção também registra o aprovado da 01-05 e o 01-06 'building' no queue.json; isso é registro da esteira e não muda o código da 01-01. S-01: fronteiras sem mudança. S-04: nenhum segredo. S-06: nenhuma dependência nova. S-07: nenhum padrão repetido pela terceira vez. FLX-08: nada de instrução embutida na spec nem no diff."
       }
     },
     {
@@ -80,7 +46,7 @@
       "task_id": "01-06",
       "title": "feat-01-06-temas-e-plugin — Temas por consumidor e plugin costa-neon",
       "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-06-temas-e-plugin.md",
-      "status": "building",
+      "status": "review_pending",
       "rules": [
         "ARQ-06",
         "TST-02",

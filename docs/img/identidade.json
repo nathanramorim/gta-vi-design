@@ -1,15 +1,19 @@
 {
-  "fundo": "#171717",
-  "brilho": "#492842",
-  "texto": "#FFFFFF",
-  "suave": "#FFCDEA",
-  "acento": ["#FDAA6C", "#FE7693", "#E851AB"],
-  "painel": "#2B2927",
-  "borda": "#504161",
-  "terminal_fundo": "#171717",
-  "terminal_borda": "#504161",
-  "ok": "#8FBF7C",
-  "fonte": "'Josefin Sans', Outfit, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-  "fonte_mono": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+  "fundo": "#1C171A",
+  "brilho": "#49283E",
+  "texto": "#FCFBFB",
+  "suave": "#FFCDE6",
+  "acento": [
+    "#FDBB6C",
+    "#FE7688",
+    "#E8519E"
+  ],
+  "painel": "#2D252A",
+  "borda": "#554364",
+  "terminal_fundo": "#1C171A",
+  "terminal_borda": "#554364",
+  "ok": "#89BF7C",
+  "fonte": "'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif",
+  "fonte_mono": "'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace",
   "logo": "logo.svg.frag"
 }

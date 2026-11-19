@@ -1,6 +1,1 @@
-<defs><linearGradient id="cnsol" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A50B9"/><stop offset="0.3" stop-color="#894CC7"/><stop offset="0.5" stop-color="#E448C7"/><stop offset="0.7" stop-color="#F268A2"/><stop offset="1" stop-color="#E28643"/></linearGradient></defs>
-<circle cx="16" cy="16" r="13" fill="url(#cnsol)"/>
-<rect x="2" y="17" width="28" height="1.2" fill="#171717"/>
-<rect x="2" y="20.5" width="28" height="1.8" fill="#171717"/>
-<rect x="2" y="24.5" width="28" height="2.6" fill="#171717"/>
-<rect x="3" y="29.4" width="26" height="1.6" rx="0.8" fill="url(#hex)"/>
+<defs><linearGradient id="cnlogosol" x1="0" y1="0" x2="0" y2="1"><stop offset="0.00" stop-color="#4D4AB9"/><stop offset="0.20" stop-color="#934CC7"/><stop offset="0.40" stop-color="#E448BA"/><stop offset="0.60" stop-color="#F26897"/><stop offset="0.80" stop-color="#F77B92"/><stop offset="1.00" stop-color="#E29343"/></linearGradient><linearGradient id="cnlogoneon" x1="0" y1="0" x2="1" y2="0"><stop offset="0.00" stop-color="#FBAE73"/><stop offset="0.50" stop-color="#FF8484"/><stop offset="1.00" stop-color="#EF60A2"/></linearGradient><clipPath id="cnlogofaixas"><rect x="0" y="3" width="32" height="14"/><rect x="0" y="17.6" width="32" height="2.2"/><rect x="0" y="21.4" width="32" height="1.9"/><rect x="0" y="25.1" width="32" height="1.5"/></clipPath></defs><circle cx="16" cy="15" r="12" fill="url(#cnlogosol)" clip-path="url(#cnlogofaixas)"/><rect x="4" y="28.6" width="24" height="1.8" rx="0.9" fill="url(#cnlogoneon)"/>

@@ -1,0 +1,9 @@
+{
+  "name": "costa-neon",
+  "version": "0.1.0",
+  "description": "Design system Costa Neon (pôr do sol tropical, neon, art déco): tokens em JSON e CSS, validador, prompts de imagem em 6 modos e um tema pronto para carrossel, vídeo, banner de README e Forge SDD. Tudo original.",
+  "license": "MIT",
+  "author": { "name": "Nathan Amorim", "url": "https://github.com/nathanramorim" },
+  "repository": "https://github.com/nathanramorim/costa-neon",
+  "keywords": ["design-system", "tokens", "tema", "prompt", "neon"]
+}
