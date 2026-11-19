@@ -2,13 +2,13 @@
   "feature_id": "",
   "branch": "feat/01-costa-neon",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-19T21:35:20Z",
+  "updated_at": "2026-11-19T21:38:00Z",
   "items": [
     {
       "task_id": "01-01",
       "title": "feat-01-01-tokens-e-validar — Tokens (paleta deslocada), tokens build e validar",
       "spec_path": "sdd/discovery/01-costa-neon/features/feat-01-01-tokens-e-validar.md",
-      "status": "queued",
+      "status": "review_pending",
       "rules": [
         "DUP-04",
         "TST-01",
@@ -16,7 +16,7 @@
         "COD-02"
       ],
       "skills_used": [],
-      "attempts": 0
+      "attempts": 1
     },
     {
       "task_id": "01-05",

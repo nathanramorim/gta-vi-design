@@ -1,0 +1,8 @@
+# Cópias exatas do motor requisitos-para-ia (o skills.lock confere o sha256): nunca converter o fim de linha.
+scripts/requisitos.py -text
+scripts/bootstrap.sh -text
+scripts/bootstrap.ps1 -text
+*.py text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.txt text eol=lf

@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CN: plugins/costa-neon/skills/costa-neon/scripts/costa_neon.py
+
+jobs:
+  testes:
+    name: testes (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: requisitos (receita dos 3 sistemas)
+        run: uv run scripts/requisitos.py validar
+      - name: CSS em dia
+        run: uv run "$CN" tokens build --checar
+      - name: validar
+        run: uv run "$CN" validar
+      - name: lint e testes
+        run: |
+          uv run ruff check
+          uv run pytest -q
