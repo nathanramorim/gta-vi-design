@@ -1,7 +1,7 @@
 # Constituição — costa-neon
 
 ## Missão
-Ser um design system replicável de pôr do sol tropical, neon e art déco ({SISTEMA} = Costa Neon): tokens em JSON e CSS, fundamentos, componentes com estados, 8 telas de referência em 1920x1080, guia de ilustração com BLOCO DE ESTILO e receitas de prompt, e um "tema" exportado para cada ferramenta consumidora. Tudo original, sem marca de jogo, filme ou empresa. A IA usa scripts determinísticos como ferramentas (`tokens build`, `validar`, `render telas`, `prompt`) e nunca inventa um valor fora dos tokens. Fonte de verdade: `docs/prompt-diretor-de-arte.md`.
+Ser um design system replicável de pôr do sol tropical, neon e art déco ({SISTEMA} = Costa Neon): tokens em JSON e CSS, fundamentos, componentes com estados, 8 telas de referência em 1920x1080, guia de ilustração com BLOCO DE ESTILO e receitas de prompt, e um "tema" exportado para cada ferramenta consumidora. Tudo original, sem marca de jogo, filme ou empresa. A IA usa scripts determinísticos como ferramentas (`tokens build`, `validar`, `render telas`, `prompt`) e nunca inventa um valor fora dos tokens. Fonte de verdade: `docs/prompt-diretor-de-arte.md`; onde ele diverge, valem as ADRs (ex.: fonte display Bowlby One, ADR-0002).
 
 ## Stack
 | Camada | Escolha | Motivo |

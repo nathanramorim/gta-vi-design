@@ -1,6 +1,6 @@
 # Discovery 01 — Costa Neon, design system replicável
 
-Fonte de verdade: [`docs/prompt-diretor-de-arte.md`](../../../docs/prompt-diretor-de-arte.md) (texto do Nathan, guardado sem alteração). Onde esta discovery ou uma ADR diverge do prompt, vale a decisão registrada aqui (ex.: fonte display).
+Fonte de verdade: [`docs/prompt-diretor-de-arte.md`](../../../docs/prompt-diretor-de-arte.md) (texto do Nathan, guardado sem alteração). Onde esta discovery ou uma ADR diverge do prompt, vale a decisão registrada aqui (ex.: fonte display Bowlby One, ADR-0002).
 
 ## Problema
 O Nathan tem um prompt de diretor de arte muito detalhado (cores exatas, tipografia, telas, componentes, receitas de imagem), mas ele só existe como texto. Cada vez que uma ferramenta (carrossel, vídeo, banner de README, lançamento do Forge SDD) quer esse visual, alguém precisa reinterpretar o texto e copiar hex à mão. O resultado varia e pode escorregar para cópia de marca existente.
@@ -41,7 +41,7 @@ Sim, proposta (ADR-0005): plugin `costa-neon` em `plugins/costa-neon/` com uma s
 | Script | O que faz |
 |--------|-----------|
 | `tokens build` | gera o CSS a partir do `tokens.json` |
-| `validar` | reprova hex fora da lista do prompt (62 valores, incluindo `#A6699D`, `#A06282`, `#D07178`, `#181818` das seções 2 e 4, mais a sombra `rgba(40,10,40,0.45)`), sombra que não seja roxa ou azul, contorno que não seja ameixa (`#201C24`), tela sem as barras `#171717` de 9% e sem a linha neon, e a palavra "Pricedown" fora do prompt literal e da ADR-0002 |
+| `validar` | reprova hex fora da lista do prompt (62 valores, incluindo `#A6699D`, `#A06282`, `#D07178`, `#181818` das seções 2 e 4, mais a sombra `rgba(40,10,40,0.45)`), sombra que não seja roxa ou azul, contorno que não seja ameixa (`#201C24`), tela sem as barras `#171717` de 9% e sem a linha neon, e "Pricedown" ou nome de obra existente só nos artefatos distribuídos (`tokens/`, `fundamentos/`, `componentes/`, `telas/`, `ilustracao/`, `temas/`, `plugins/`, `README.md`), nunca em `sdd/` nem no `docs/prompt-diretor-de-arte.md` |
 | `render telas` | HTML -> PNG 1920x1080 + folha de contato para a conferência visual |
 | `prompt` | monta o prompt de imagem: BLOCO DE ESTILO + receita + variáveis, nos 6 modos; sorteio com `--semente` (mesmo resultado sempre); recusa nome de obra existente nas variáveis |
 | `tema <consumidor>` | gera o arquivo de cada consumidor |

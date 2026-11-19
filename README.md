@@ -75,7 +75,7 @@ Ainda não há comandos de design. O que existe hoje:
 
 | Quero | Onde |
 |---|---|
-| Ler a fonte de verdade do estilo | [`docs/prompt-diretor-de-arte.md`](docs/prompt-diretor-de-arte.md) |
+| Ler a fonte de verdade do estilo (onde diverge, valem as ADRs; ex.: display Bowlby One) | [`docs/prompt-diretor-de-arte.md`](docs/prompt-diretor-de-arte.md) |
 | Ver o plano e as perguntas em aberto | [`sdd/discovery/01-costa-neon/discovery.md`](sdd/discovery/01-costa-neon/discovery.md) |
 | Ver os critérios e a arquitetura | [`sdd/discovery/01-costa-neon/criteria.md`](sdd/discovery/01-costa-neon/criteria.md) |
 | Ver as decisões (ADRs) | [`sdd/spec/adr/`](sdd/spec/adr/) |

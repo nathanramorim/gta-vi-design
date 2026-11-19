@@ -24,4 +24,4 @@ Opção 2.
 ## Consequências
 - **Positivas:** uso comercial e público sem risco de marca; fontes redistribuíveis.
 - **Negativas / Trade-offs:** Bowlby One não tem o mesmo desenho do letreiro de referência (é intencional).
-- **Ações de acompanhamento:** `validar` reprova "Pricedown" em tokens, CSS e docs (exceto o prompt literal e esta ADR); revisão de PI por peça.
+- **Ações de acompanhamento:** `validar` reprova "Pricedown" e nomes de obras existentes só nos artefatos distribuídos (`tokens/`, `fundamentos/`, `componentes/`, `telas/`, `ilustracao/`, `temas/`, `plugins/`, `README.md`), nunca em `sdd/` nem no `docs/prompt-diretor-de-arte.md`; revisão de PI por peça.

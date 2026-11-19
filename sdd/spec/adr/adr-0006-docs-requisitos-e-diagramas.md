@@ -13,7 +13,7 @@ Os repositórios do dono seguem um padrão: README comercial com `## Requisitos`
 2. **readme-studio (`readme-comercial`) + motor requisitos-para-ia v0.1.0 vendorizado + skill `diagramas-c4-mermaid` com motor diagram-studio:** padrão verificável.
 
 ## Decisão
-Opção 2. `scripts/requisitos.py`, `bootstrap.sh` e `bootstrap.ps1` copiados sem edição da tag `v0.1.0` (`skills.lock` com commit e sha256); `requisitos.toml` na raiz. Diagramas em JSON em `docs/diagramas/`, renderizados em SVG e PNG escuros. Se o diagram-studio faltar, usar Mermaid e dizer isso no PR.
+Opção 2. `scripts/requisitos.py`, `bootstrap.sh` e `bootstrap.ps1` copiados sem edição da tag `v0.1.0` (`skills.lock` com commit e sha256); `requisitos.toml` na raiz. Diagramas em JSON em `docs/diagramas/`, renderizados em SVG e PNG escuros. Se o diagram-studio faltar, usar Mermaid e dizer isso no PR. Neste projeto, as imagens do diagram-studio substituem os blocos Mermaid de C4 pedidos no passo 6 de `.agents/skills/sdd-concepcao/references/discovery.md`.
 
 ## Consequências
 - **Positivas:** README passa no `verificar_readme.py`; diagramas legíveis.

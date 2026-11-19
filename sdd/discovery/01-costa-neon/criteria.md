@@ -67,7 +67,7 @@ Critério de aceitação é uma frase que um comando consegue provar sozinho, se
 | # | Feature | Critério | Como provar |
 |---|---------|----------|-------------|
 | C1 | 01 | `tokens.json` contém exatamente os 62 hex do prompt (lista em `tests/dados/hex-prompt.txt`) e a sombra `rgba(40,10,40,0.45)`; `tokens build` gera CSS com uma variável por token | `uv run pytest tests/test_tokens.py` |
-| C2 | 01 | `validar` sai 0 nos arquivos oficiais e sai 2 em cada fixture ruim: hex fora da lista, sombra preta ou cinza, contorno `#000000`, tela sem barra `#171717` de 9% ou sem linha neon, a palavra "Pricedown" fora do prompt literal e da ADR-0002 | `uv run pytest tests/test_validar.py` |
+| C2 | 01 | `validar` sai 0 nos arquivos oficiais e sai 2 em cada fixture ruim: hex fora da lista, sombra preta ou cinza, contorno `#000000`, tela sem barra `#171717` de 9% ou sem linha neon, "Pricedown" ou nome de obra existente só nos artefatos distribuídos (`tokens/`, `fundamentos/`, `componentes/`, `telas/`, `ilustracao/`, `temas/`, `plugins/`, `README.md`), nunca em `sdd/` nem no `docs/prompt-diretor-de-arte.md` | `uv run pytest tests/test_validar.py` |
 | C3 | 02 | Página de fundamentos mostra uma amostra por token de cor e degradê e a escala tipográfica do prompt (50/22/48/20/20/18/19/30 px) | teste conta amostras = tokens; PNG conferido |
 | C4 | 03 | Cada componente tem os 4 estados (normal, foco, ativo, desabilitado) e só usa `var(--cn-*)`; no máximo 1 gradiente de acento por tela | `uv run pytest tests/test_componentes.py` |
 | C5 | 04 | `render telas` gera 8 PNG de 1920x1080; `validar` aprova as 8; folha de contato olhada pelo agente | `uv run pytest tests/test_telas.py` + leitura da folha |
