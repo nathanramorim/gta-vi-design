@@ -7,8 +7,8 @@ Ser um design system replicável de pôr do sol tropical, neon e art déco ({SIS
 | Camada | Escolha | Motivo |
 |--------|---------|--------|
 | Runtime | Python >= 3.11 via `uv` (PEP 723 nos scripts; `pyproject.toml` para dev) | Um comando roda tudo em macOS, Linux e Windows, sem pip (ADR-0003) |
-| Tokens | `tokens/costa-neon.tokens.json` como casa única; CSS e temas gerados por script | Um valor muda em um lugar só (ADR-0001) |
-| Render (proposta) | HTML/CSS -> PNG no Chrome local via Playwright, como no carrossel-studio | Fontes e CSS reais, sem serviço externo (ADR-0004, a confirmar no Gate 1) |
+| Tokens | `plugins/costa-neon/skills/costa-neon/tokens/costa-neon.tokens.json` como casa única (paleta deslocada, ADR-0007); CSS e temas gerados por script | Um valor muda em um lugar só (ADR-0001) |
+| Render | HTML/CSS -> PNG no Chrome local via Playwright, como no carrossel-studio (features 02 a 04) | Fontes e CSS reais, sem serviço externo (ADR-0004) |
 | Fontes | Abertas (OFL-1.1) via fontsource, cache em `~/.cache/costa-neon/fontes` | Licença livre, baixa uma vez (ADR-0002) |
 | Docs | README pelo readme-studio + motor requisitos-para-ia v0.1.0; diagramas pelo diagram-studio | Padrão dos repositórios do dono (ADR-0006) |
 | DB | none | Entradas e saídas são arquivos |
@@ -21,10 +21,12 @@ Ser um design system replicável de pôr do sol tropical, neon e art déco ({SIS
 | Fonte única | `tokens.json`; CSS, temas e telas derivados (ADR-0001) |
 | Originalidade | Nada de marca, nome, personagem, mapa, arte de interface ou fonte associada a obra existente; display padrão Bowlby One, nunca Pricedown (ADR-0002) |
 | Python | Sempre `uv`; nunca pip; multiplataforma (ADR-0003) |
-| Distribuição | Plugin/skill `costa-neon` com temas por consumidor (ADR-0005, proposta) |
+| Distribuição | Plugin/skill `costa-neon` com temas por consumidor (ADR-0005) |
+| Paleta | Hex do prompt deslocados; `tokens.json` é a fonte do hex final (ADR-0007) |
+| Licença | MIT; privado até a v0.1, público depois |
 | Docs e diagramas | readme-studio + requisitos-para-ia v0.1.0; diagram-studio, Mermaid só como reserva declarada (ADR-0006) |
 | Idioma e nível | pt-BR em tudo; Nível de Linguagem: iniciante |
-| VCS | GitHub (`nathanramorim/costa-neon`, privado) |
+| VCS | GitHub (`nathanramorim/costa-neon`, privado até a v0.1) |
 
 ## Ferramentas e Integrações
 | Campo | Valor |
@@ -42,7 +44,7 @@ Consulte `sdd/memory/mcps.md` para o status real de cada MCP configurado (`ativo
 5. Foto de pessoa só com autorização dela, só adultos, sem figuras públicas; a autorização é declaração da pessoa, nunca do agente. (`SEG-05`)
 6. Secrets em `.env` ou cofre seguro — nunca no repositório. (`SEG-04`)
 7. Antes de usar lib externa, consultar context7 com versão exata — se `sdd/memory/mcps.md` o listar como `ativo`; se `indisponível`, usar a documentação oficial da lib. (`SEG-07`)
-8. Fonte única: `tokens.json` é a casa de cada valor; CSS, temas e telas são gerados. `validar` reprova hex fora da lista do prompt, sombra que não seja roxa ou azul, contorno que não seja ameixa e tela sem barras e linha neon. (`DUP-04`, `TST-01`)
+8. Fonte única: `tokens.json` é a casa de cada valor; CSS, temas e telas são gerados. `validar` reprova hex fora do `tokens.json` (paleta deslocada, ADR-0007), sombra que não seja roxa ou azul, contorno que não seja ameixa e tela sem barras e linha neon. (`DUP-04`, `TST-01`)
 9. Python só via `uv` (nunca `pip`); `uv run ruff check` e `uv run pytest` passam após cada task; funciona em macOS, Linux e Windows (`pathlib`, sem shell, sem caminho fixo). (`COD-02`, `TST-01`, `SEG-03`)
 10. Dependências de runtime mínimas e com versão fixa. (`ARQ-04`)
 11. Conferência visual obrigatória: toda tela, prancha ou diagrama é renderizado e o agente olha a imagem antes de entregar. Fontes só abertas (OFL ou Apache), baixadas do fontsource uma vez para `~/.cache/costa-neon/fontes` (ou `COSTA_NEON_CACHE`). (`TST-01`, `ARQ-03`)

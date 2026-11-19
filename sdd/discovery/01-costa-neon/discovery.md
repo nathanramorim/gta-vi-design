@@ -112,3 +112,15 @@ Como chegam: baixadas do fontsource (jsDelivr) uma vez para `~/.cache/costa-neon
 
 ## Dono
 Nathan (produto e direção de arte). Construção pelo fluxo Forge SDD.
+
+## Decisões do Gate 1 (Nathan, 19/11/2026: "recomendações")
+1. Nome `costa-neon`; privado por enquanto, público depois da v0.1.
+2. Bowlby One é o display padrão; Pricedown fora de tudo (ADR-0002).
+3. Paleta: cada hex deslocado um pouco, mesmo visual, nenhum valor a ±3 por canal do conceito; o prompt fica literal; `tokens.json` + ADR-0007 (tabela origem → token) são a fonte do hex final; o `validar` usa os tokens.
+4. "Contorno preto" vira a tinta ameixa deslocada (`cor.tinta`).
+5. Costa Neon é o tema do Forge SDD "Edição Missões" (no lugar da branch `feat/readme-v5-gta-vi`) e do marketing do hub. Registrado como decisão e consumidor; aplicar lá é fix separado, sem mexer no forge-sdd nem no hub agora.
+6. Exemplos: `{MARCA}=Acme`, `{CIDADE}=Palmarena`.
+7. ADR-0004 e ADR-0005 aprovadas.
+8. Ilustrações da v0.1: formas vetoriais próprias, sem geração por IA.
+9. Primeiro o mínimo: features 01 (tokens + validador), 05 (guia + `prompt`, 6 modos, com semente) e 06 (temas + plugin). 02, 03, 04 e 07 ficam para as próximas ondas.
+10. Licença MIT (LICENSE e README atualizados).

@@ -1,0 +1,383 @@
+{
+  "$schema": "costa-neon/tokens@1",
+  "sistema": "Costa Neon",
+  "versao": "0.1.0",
+  "origem": "docs/prompt-diretor-de-arte.md, com cada hex deslocado (ADR-0007)",
+  "cores": {
+    "vinho": {
+      "valor": "#6A1A35",
+      "uso": "vinho base"
+    },
+    "ameixa": {
+      "valor": "#49283E",
+      "uso": "overlay e sombra dura"
+    },
+    "malva-painel": {
+      "valor": "#7B5882",
+      "uso": "painel"
+    },
+    "malva-escuro": {
+      "valor": "#554364",
+      "uso": "cabeçalho do painel de descrição"
+    },
+    "preto-barra": {
+      "valor": "#1C171A",
+      "uso": "barras de topo e base"
+    },
+    "preto-lateral": {
+      "valor": "#201A1E",
+      "uso": "faixa lateral do menu de pausa"
+    },
+    "chip-escuro": {
+      "valor": "#2D252A",
+      "uso": "chips e ícones de botão"
+    },
+    "disco-escuro": {
+      "valor": "#33292F",
+      "uso": "discos de vida e energia"
+    },
+    "tinta": {
+      "valor": "#241E27",
+      "uso": "contorno (nunca preto puro)"
+    },
+    "laranja-selecao": {
+      "valor": "#E29343",
+      "uso": "linha selecionada"
+    },
+    "laranja-texto-ativo": {
+      "valor": "#E7AC64",
+      "uso": "texto do item ativo"
+    },
+    "magenta": {
+      "valor": "#E247B6",
+      "uso": "destaque magenta"
+    },
+    "branco": {
+      "valor": "#FCFBFB",
+      "uso": "texto"
+    },
+    "rosa-valor": {
+      "valor": "#FFCDE6",
+      "uso": "valor da lista"
+    },
+    "amarelo-aviso": {
+      "valor": "#FBEE91",
+      "uso": "avisos"
+    },
+    "vida": {
+      "valor": "#FE758D",
+      "uso": "vida, foco"
+    },
+    "energia": {
+      "valor": "#FFBC49",
+      "uso": "energia"
+    },
+    "seta-jogador": {
+      "valor": "#FE7B93",
+      "uso": "seta do jogador"
+    },
+    "marcador": {
+      "valor": "#F8B6FF",
+      "uso": "marcador"
+    },
+    "radar": {
+      "valor": "#9295AB",
+      "uso": "mapa do radar"
+    },
+    "inimigo": {
+      "valor": "#AC383A",
+      "uso": "ponto de inimigo"
+    },
+    "inimigo-mancha": {
+      "valor": "#753935",
+      "uso": "mancha do inimigo (50%)"
+    },
+    "estrela-inativa": {
+      "valor": "#434567",
+      "uso": "estrela de alerta inativa"
+    },
+    "atributo-ganho": {
+      "valor": "#FF74CC",
+      "uso": "barra de atributo, ganho"
+    },
+    "atributo-perda": {
+      "valor": "#D14133",
+      "uso": "barra de atributo, perda"
+    },
+    "arco-item": {
+      "valor": "#FA6D95",
+      "uso": "arco do item ativo"
+    },
+    "mapa-parque": {
+      "valor": "#89BF7C",
+      "uso": "parque no mapa"
+    },
+    "mapa-agua": {
+      "valor": "#3F6C81",
+      "uso": "água no mapa"
+    },
+    "apoio-salvia": {
+      "valor": "#80A07C",
+      "uso": "apoio de prancha"
+    },
+    "apoio-ardosia": {
+      "valor": "#626D97",
+      "uso": "apoio de prancha"
+    },
+    "apoio-lavanda": {
+      "valor": "#A892BA",
+      "uso": "apoio de prancha"
+    },
+    "apoio-ceu": {
+      "valor": "#7193C5",
+      "uso": "apoio de prancha"
+    },
+    "apoio-rosa": {
+      "valor": "#E77990",
+      "uso": "apoio de prancha"
+    },
+    "apoio-lilas": {
+      "valor": "#B184A8",
+      "uso": "apoio de prancha"
+    },
+    "apoio-ciano": {
+      "valor": "#64ACCF",
+      "uso": "apoio de prancha"
+    },
+    "apoio-flamingo": {
+      "valor": "#CA52DB",
+      "uso": "apoio de prancha"
+    },
+    "onda-lilas": {
+      "valor": "#A66998",
+      "uso": "onda do rótulo de seção"
+    }
+  },
+  "degrades": {
+    "sunset": {
+      "angulo": "90deg",
+      "paradas": [
+        "#FEB56B",
+        "#FF9087",
+        "#FA778B",
+        "#C0638F",
+        "#A56F9A"
+      ],
+      "uso": "fundo de página"
+    },
+    "acento": {
+      "angulo": "90deg",
+      "paradas": [
+        "#FDBB6C",
+        "#FE7688",
+        "#E8519E"
+      ],
+      "uso": "item ativo, chips, botões"
+    },
+    "neon": {
+      "angulo": "90deg",
+      "paradas": [
+        "#FBAE73",
+        "#FF8484",
+        "#EF60A2"
+      ],
+      "uso": "linha neon das barras"
+    },
+    "ceu": {
+      "angulo": "180deg",
+      "paradas": [
+        "#343F9C",
+        "#4D4AB9",
+        "#885DA1",
+        "#CA85A1",
+        "#FEC06E"
+      ],
+      "uso": "céu, de cima para baixo"
+    },
+    "sol": {
+      "angulo": "180deg",
+      "paradas": [
+        "#4D4AB9",
+        "#934CC7",
+        "#E448BA",
+        "#F26897",
+        "#F77B92",
+        "#E29343"
+      ],
+      "uso": "sol retrô listrado"
+    },
+    "anel": {
+      "angulo": "135deg",
+      "paradas": [
+        "#F1B57A",
+        "#F67A8D",
+        "#DE65A4"
+      ],
+      "uso": "anel do radar e dos ícones de botão"
+    },
+    "lista": {
+      "angulo": "90deg",
+      "paradas": [
+        "#A0627D",
+        "#D07271"
+      ],
+      "uso": "painel da lista de opções"
+    }
+  },
+  "tipografia": {
+    "familias": {
+      "display": {
+        "fonte": "Bowlby One",
+        "fontsource": "bowlby-one",
+        "pesos": [
+          400
+        ],
+        "pilha": "'Bowlby One', 'Arial Black', Impact, sans-serif",
+        "uso": "menu, abas, dinheiro, títulos de impacto; branco com contorno de 2 a 3px na tinta"
+      },
+      "texto": {
+        "fonte": "Josefin Sans",
+        "fontsource": "josefin-sans",
+        "pesos": [
+          400,
+          500,
+          600,
+          700
+        ],
+        "pilha": "'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif",
+        "uso": "texto e títulos de tela"
+      },
+      "texto-alternativa": {
+        "fonte": "Outfit",
+        "fontsource": "outfit",
+        "pesos": [
+          400,
+          500,
+          600,
+          700
+        ],
+        "pilha": "Outfit, system-ui, sans-serif",
+        "uso": "alternativa ao texto"
+      },
+      "script": {
+        "fonte": "Kaushan Script",
+        "fontsource": "kaushan-script",
+        "pesos": [
+          400
+        ],
+        "pilha": "'Kaushan Script', 'Brush Script MT', cursive",
+        "uso": "rótulo de seção sobre onda lilás"
+      },
+      "slab": {
+        "fonte": "Zilla Slab",
+        "fontsource": "zilla-slab",
+        "pesos": [
+          400,
+          600,
+          700
+        ],
+        "pilha": "'Zilla Slab', Rockwell, Georgia, serif",
+        "uso": "título de prancha"
+      },
+      "gigante": {
+        "fonte": "Anton",
+        "fontsource": "anton",
+        "pesos": [
+          400
+        ],
+        "pilha": "Anton, Impact, sans-serif",
+        "uso": "título gigante condensado"
+      },
+      "hud": {
+        "fonte": "Oswald",
+        "fontsource": "oswald",
+        "pesos": [
+          400,
+          500,
+          600
+        ],
+        "pilha": "Oswald, 'Arial Narrow', sans-serif",
+        "uso": "rótulos de roda e HUD"
+      },
+      "mono": {
+        "fonte": "JetBrains Mono",
+        "fontsource": "jetbrains-mono",
+        "pesos": [
+          400,
+          700
+        ],
+        "pilha": "'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace",
+        "uso": "código nos temas consumidores"
+      }
+    },
+    "escala-px": {
+      "titulo-tela": 50,
+      "corpo": 22,
+      "item-menu": 48,
+      "aba": 20,
+      "linha-lista": 20,
+      "valor": 18,
+      "dica-botao": 19,
+      "dinheiro": 30
+    },
+    "pesos": {
+      "linha-lista": 600,
+      "titulo-tela": 500
+    },
+    "titulo-espacamento": "0.04em",
+    "corpo-entrelinha": 1.35,
+    "display-contorno-px": [
+      2,
+      3
+    ]
+  },
+  "espacamento": {
+    "base-px": 8,
+    "margem-lateral": "4%",
+    "barra-altura": "9%",
+    "barra-altura-post": "7%"
+  },
+  "raios": {
+    "tela": "0",
+    "painel": "0",
+    "atalho": "6px",
+    "botao": "9999px"
+  },
+  "sombras": {
+    "apresentacao": {
+      "valor": "0 40px 80px rgba(44,12,48,0.45)",
+      "uso": "tela sobre o gradiente sunset"
+    },
+    "rotulo": {
+      "valor": "2px 2px 0 #49283E",
+      "uso": "sombra dura do rótulo de seção"
+    },
+    "neon": {
+      "valor": "0 0 8px #FF8484",
+      "uso": "brilho da linha neon (mesma cor)"
+    }
+  },
+  "efeitos": {
+    "neon-espessura-px": 3,
+    "neon-brilho-px": 8,
+    "painel-opacidade": [
+      0.55,
+      0.7
+    ],
+    "menu-desfoque-px": 12,
+    "radio-inativo-opacidade": 0.45,
+    "inimigo-mancha-opacidade": 0.5
+  },
+  "variaveis": {
+    "SISTEMA": "Costa Neon",
+    "MARCA": "Acme",
+    "CIDADE": "Palmarena",
+    "IDIOMA": "português do Brasil",
+    "FORMATO": "16:9"
+  },
+  "formatos": [
+    "16:9",
+    "1:1",
+    "9:16"
+  ]
+}
