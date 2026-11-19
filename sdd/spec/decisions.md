@@ -15,4 +15,4 @@
 
 | # | Questão |
 |---|---------|
-| D1 | Perguntas do Gate 1 da iniciativa 0001 (`sdd/discovery/0001-costa-neon/discovery.md`) |
+| D1 | Perguntas do Gate 1 da iniciativa 01 (`sdd/discovery/01-costa-neon/discovery.md`) |

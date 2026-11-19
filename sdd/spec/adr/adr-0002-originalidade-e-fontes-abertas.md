@@ -6,7 +6,7 @@
 - **Autor / Responsável:** dono do repositório
 
 ## Contexto
-O universo do Costa Neon lembra um gênero conhecido (mundo aberto em cidade costeira ao pôr do sol). O prompt original sugere "Pricedown Black" como display padrão; essa fonte é fortemente associada ao logotipo de uma série de jogos existente. HUD, radar, estrelas de alerta, dinheiro e rodas de seleção e de rádio são convenções do gênero, mas a disposição exata e a iconografia de um jogo específico não são nossas. A paleta do prompt é quase igual, hex a hex, à medida de um conceito de fã publicado com todos os direitos reservados (registrado na discovery 0001).
+O universo do Costa Neon lembra um gênero conhecido (mundo aberto em cidade costeira ao pôr do sol). O prompt original sugere "Pricedown Black" como display padrão; essa fonte é fortemente associada ao logotipo de uma série de jogos existente. HUD, radar, estrelas de alerta, dinheiro e rodas de seleção e de rádio são convenções do gênero, mas a disposição exata e a iconografia de um jogo específico não são nossas. A paleta do prompt é quase igual, hex a hex, à medida de um conceito de fã publicado com todos os direitos reservados (registrado na discovery 01).
 
 ## Opções Consideradas
 1. **Seguir o prompt ao pé da letra (Pricedown padrão):** fiel ao texto, mas associa o sistema a marca de terceiros e a uma fonte sem licença aberta clara.

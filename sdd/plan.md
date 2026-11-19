@@ -4,7 +4,7 @@
 
 | Fase | Feature | Entrega | Critério resumido |
 |------|---------|---------|-------------------|
-| 0 | `sdd/discovery/0001-costa-neon` | Discovery do design system (Gate 1) | `forge brief --check` = 0; README passa no verificador |
+| 0 | `sdd/discovery/01-costa-neon` | Discovery do design system (Gate 1) | `forge brief --check` = 0; README passa no verificador |
 
 ## Dependências externas
 ```
