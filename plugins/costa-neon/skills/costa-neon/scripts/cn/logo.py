@@ -7,10 +7,15 @@ from cn import tokens as tk
 FAIXAS = ((3, 14), (17.6, 2.2), (21.4, 1.9), (25.1, 1.5))
 
 
+def paradas_svg(cores: list[str]) -> str:
+    """<stop> de um degradê SVG com as paradas igualmente espaçadas (helper único, DUP-04)."""
+    return "".join(f'<stop offset="{i / (len(cores) - 1):.2f}" stop-color="{c}"/>' for i, c in enumerate(cores))
+
+
 def _defs(t: dict, prefixo: str) -> str:
     sol = tk.paradas(t, "sol")
     neon = tk.paradas(t, "neon")
-    passos = lambda cs: "".join(f'<stop offset="{i / (len(cs) - 1):.2f}" stop-color="{c}"/>' for i, c in enumerate(cs))  # noqa: E731
+    passos = paradas_svg
     faixas = "".join(f'<rect x="0" y="{y}" width="32" height="{h}"/>' for y, h in FAIXAS)
     return (f'<defs><linearGradient id="{prefixo}sol" x1="0" y1="0" x2="0" y2="1">{passos(sol)}</linearGradient>'
             f'<linearGradient id="{prefixo}neon" x1="0" y1="0" x2="1" y2="0">{passos(neon)}</linearGradient>'

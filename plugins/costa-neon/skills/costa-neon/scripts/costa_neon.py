@@ -97,7 +97,7 @@ def parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_validar)
     p = sub.add_parser("tema", help="gera o tema de uma ferramenta consumidora")
     p.add_argument("consumidor", choices=[*temas.CONSUMIDORES, "todos"])
-    p.add_argument("--saida", required=True, help="pasta de saída (só ela é escrita)")
+    p.add_argument("--saida", required=True, help="pasta de saída (só ela é escrita; os arquivos do tema são sobrescritos). Para video, a raiz do projeto")
     p.add_argument("--previa", action="store_true", help="grava também previa-<consumidor>.svg para conferência visual")
     p.add_argument("--validar", action="store_true", help="só lista o que seria gravado")
     p.add_argument("--json", action="store_true")

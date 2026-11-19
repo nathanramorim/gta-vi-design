@@ -92,8 +92,8 @@ uv run $CN prompt --modo 6 --tema capa --descricao "a pink motel sign at dusk"
 | Tema | Arquivos | Para |
 |---|---|---|
 | `carrossel` | `marca.json`, `marca/logo.svg` | carrossel-studio (`--marca`) |
-| `video` | `.video-marca.json`, `marca/logo.svg` | gerador-videos (coloque em `conteudo/`) |
-| `readme` | `identidade.json`, `logo.svg.frag` | banner do readme-studio (este README usa) |
+| `video` | `conteudo/.video-marca.json`, `conteudo/marca/logo.svg` | gerador-videos (use `--saida` = raiz do projeto) |
+| `readme` | `identidade.json`, `logo.svg.frag`, `ilustracao.svg.frag` | banner do readme-studio (este README usa) |
 | `forge-sdd` | `forge-sdd-missoes.json`, `logo.svg` | Forge SDD "Edição Missões": as 5 estações como missões |
 
 Guia de ilustração e os 6 modos: [`plugins/costa-neon/skills/costa-neon/ilustracao/GUIA.md`](plugins/costa-neon/skills/costa-neon/ilustracao/GUIA.md). Fonte de verdade do estilo: [`docs/prompt-diretor-de-arte.md`](docs/prompt-diretor-de-arte.md); onde diverge, valem as ADRs (paleta deslocada na ADR-0007, display Bowlby One na ADR-0002).

@@ -30,3 +30,5 @@ Modos do `prompt`: 1 design system, 2 personagem por foto (só com `--foto-autor
 - Foto de pessoa só com autorização dela, só adultos, sem figuras públicas. `--foto-autorizada` é a declaração da pessoa; nunca marque por ela.
 - Fontes abertas: display Bowlby One; texto Josefin Sans; script Kaushan Script; slab Zilla Slab; gigante Anton; HUD Oswald.
 - No arquivo de marca (carrossel e vídeo), o título é Oswald porque o carrossel pede pesos 400 a 600.
+- Tema `video`: passe a raiz do projeto em `--saida`; ele grava `conteudo/.video-marca.json` e `conteudo/marca/logo.svg`.
+- `tema` sobrescreve os arquivos do tema na `--saida`.
