@@ -10,10 +10,10 @@
 | 4 | Render | HTML -> PNG no Chrome local | ADR-0004 |
 | 5 | Distribuição | Plugin/skill com temas por consumidor | ADR-0005 |
 | 7 | Paleta | Hex do prompt deslocados, tokens são a fonte | ADR-0007 |
-| 10 | Formato 4:5 | `{FORMATO}` inclui 4:5 (1080x1350) para peças de letreiro | ADR-0008 |
 | 8 | Primeiro consumidor | Forge SDD "Edição Missões" e marketing do hub (aplicação lá é fix separado) | ADR-0005 |
 | 9 | Licença e visibilidade | MIT; privado até a v0.1 | Gate 1 |
 | 6 | Docs e diagramas | readme-studio + requisitos-para-ia v0.1.0; diagram-studio | ADR-0006 |
+| 10 | Formato 4:5 | `{FORMATO}` inclui 4:5 (1080x1350) para peças de letreiro | ADR-0008 |
 
 ## Abertas
 

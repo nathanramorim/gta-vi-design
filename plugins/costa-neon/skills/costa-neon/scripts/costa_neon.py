@@ -10,7 +10,7 @@ Uso:
   uv run costa_neon.py validar [caminhos...] [--json]
   uv run costa_neon.py tema carrossel|video|readme|forge-sdd|todos --saida <pasta> [--previa] [--validar] [--json]
   uv run costa_neon.py render amostra|peca --saida <pasta> [--formato 4:5|1:1|todos] [--semente N] [--titulo1 X ...] [--json]
-  uv run costa_neon.py prompt --modo 1..6 | --cena letreiro [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
+  uv run costa_neon.py prompt --modo 1..6 | --cena letreiro [--semente N] [--formato 16:9|1:1|9:16|4:5] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
 """
