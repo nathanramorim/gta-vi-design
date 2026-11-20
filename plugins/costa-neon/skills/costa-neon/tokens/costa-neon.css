@@ -37,6 +37,10 @@
   --cn-cor-apoio-ciano: #64ACCF;
   --cn-cor-apoio-flamingo: #CA52DB;
   --cn-cor-onda-lilas: #A66998;
+  --cn-cor-lima-destaque: #B6F23A;
+  --cn-cor-painel-letreiro: #16101F;
+  --cn-cor-contorno-painel: #F6D9A8;
+  --cn-cor-rosa-letreiro: #FF5CB4;
   --cn-degrade-sunset: linear-gradient(90deg, #FEB56B 0%, #FF9087 25%, #FA778B 50%, #C0638F 75%, #A56F9A 100%);
   --cn-degrade-acento: linear-gradient(90deg, #FDBB6C 0%, #FE7688 50%, #E8519E 100%);
   --cn-degrade-neon: linear-gradient(90deg, #FBAE73 0%, #FF8484 50%, #EF60A2 100%);
@@ -44,6 +48,7 @@
   --cn-degrade-sol: linear-gradient(180deg, #4D4AB9 0%, #934CC7 20%, #E448BA 40%, #F26897 60%, #F77B92 80%, #E29343 100%);
   --cn-degrade-anel: linear-gradient(135deg, #F1B57A 0%, #F67A8D 50%, #DE65A4 100%);
   --cn-degrade-lista: linear-gradient(90deg, #A0627D 0%, #D07271 100%);
+  --cn-degrade-ceu-letreiro: linear-gradient(180deg, #3B2486 0%, #A63AA8 33%, #FF7E4A 67%, #FFD06B 100%);
   --cn-fonte-display: 'Bowlby One', 'Arial Black', Impact, sans-serif;
   --cn-fonte-texto: 'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif;
   --cn-fonte-texto-alternativa: Outfit, system-ui, sans-serif;

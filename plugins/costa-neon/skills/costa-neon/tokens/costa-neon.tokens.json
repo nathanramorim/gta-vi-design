@@ -151,6 +151,22 @@
     "onda-lilas": {
       "valor": "#A66998",
       "uso": "onda do rótulo de seção"
+    },
+    "lima-destaque": {
+      "valor": "#B6F23A",
+      "uso": "letreiro: um por peça, só em valor ou oferta"
+    },
+    "painel-letreiro": {
+      "valor": "#16101F",
+      "uso": "letreiro: fundo quase preto do painel"
+    },
+    "contorno-painel": {
+      "valor": "#F6D9A8",
+      "uso": "letreiro: contorno claro, exceção declarada só no painel-letreiro"
+    },
+    "rosa-letreiro": {
+      "valor": "#FF5CB4",
+      "uso": "letreiro: faixa de chamada e linha 2 do título"
     }
   },
   "degrades": {
@@ -222,6 +238,16 @@
         "#D07271"
       ],
       "uso": "painel da lista de opções"
+    },
+    "ceu-letreiro": {
+      "angulo": "180deg",
+      "paradas": [
+        "#3B2486",
+        "#A63AA8",
+        "#FF7E4A",
+        "#FFD06B"
+      ],
+      "uso": "letreiro: céu de cima para baixo (roxo, magenta, laranja, amarelo no horizonte)"
     }
   },
   "tipografia": {
@@ -380,5 +406,59 @@
     "16:9",
     "1:1",
     "9:16"
-  ]
+  ],
+  "excecoes": {
+    "contorno-claro": {
+      "cor": "contorno-painel",
+      "so-em": "painel-letreiro",
+      "uso": "único contorno que não é a tinta (Regra 8); fora do painel-letreiro reprova"
+    }
+  },
+  "contraste": {
+    "minimo-texto": 4.5,
+    "minimo-titulo": 3,
+    "pares": [
+      {
+        "texto": "branco",
+        "fundo": "painel-letreiro",
+        "papel": "texto"
+      },
+      {
+        "texto": "rosa-valor",
+        "fundo": "painel-letreiro",
+        "papel": "texto"
+      },
+      {
+        "texto": "lima-destaque",
+        "fundo": "painel-letreiro",
+        "papel": "texto"
+      },
+      {
+        "texto": "rosa-letreiro",
+        "fundo": "painel-letreiro",
+        "papel": "texto"
+      },
+      {
+        "texto": "tinta",
+        "fundo": "rosa-letreiro",
+        "papel": "texto"
+      },
+      {
+        "texto": "tinta",
+        "fundo": "lima-destaque",
+        "papel": "texto"
+      },
+      {
+        "texto": "branco",
+        "fundo": "ceu-letreiro:0",
+        "papel": "titulo"
+      },
+      {
+        "texto": "branco",
+        "fundo": "ceu-letreiro:1",
+        "papel": "titulo"
+      }
+    ],
+    "uso": "pares texto/fundo do letreiro; o título fica na metade de cima do céu (paradas 0 e 1)"
+  }
 }

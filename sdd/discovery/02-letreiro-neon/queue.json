@@ -1,0 +1,64 @@
+{
+  "feature_id": "",
+  "branch": "",
+  "spec_status": "reviewed",
+  "updated_at": "2026-11-20T10:57:24Z",
+  "items": [
+    {
+      "task_id": "02-01",
+      "title": "feat-02-01-paleta-e-contraste — Paleta e contraste de letreiro",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-01-paleta-e-contraste.md",
+      "status": "review_pending",
+      "rules": [
+        "DUP-01",
+        "DUP-04",
+        "TST-01",
+        "COD-02"
+      ],
+      "skills_used": [],
+      "attempts": 1
+    },
+    {
+      "task_id": "02-02",
+      "title": "feat-02-02-tipografia-letreiro — Tipografia de letreiro",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-02-tipografia-letreiro.md",
+      "status": "queued",
+      "rules": [
+        "SEG-07",
+        "DUP-04",
+        "TST-01",
+        "GOV-01"
+      ],
+      "skills_used": [],
+      "attempts": 0
+    },
+    {
+      "task_id": "02-03",
+      "title": "feat-02-03-fundos-e-cenarios — Fundos e cenários para imagem",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-03-fundos-e-cenarios.md",
+      "status": "queued",
+      "rules": [
+        "ARQ-06",
+        "SEG-01",
+        "TST-03",
+        "DUP-03"
+      ],
+      "skills_used": [],
+      "attempts": 0
+    },
+    {
+      "task_id": "02-04",
+      "title": "feat-02-04-peca-de-letreiro — Peça de letreiro (cartaz e post)",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-04-peca-de-letreiro.md",
+      "status": "queued",
+      "rules": [
+        "TST-01",
+        "DUP-03",
+        "SEG-07",
+        "ARQ-06"
+      ],
+      "skills_used": [],
+      "attempts": 0
+    }
+  ]
+}
