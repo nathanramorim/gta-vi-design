@@ -76,3 +76,37 @@ def test_hashes_batem_com_a_lista_legivel():
 def test_ignora_prompt_literal_e_sdd():
     alvos = validar.arquivos([RAIZ / "docs", RAIZ / "sdd"])
     assert not any(p.name == "prompt-diretor-de-arte.md" or "sdd" in p.parts for p in alvos)
+
+
+# 02-01: hex lima e contorno claro do painel-letreiro
+LIMA = "#B6F23A"  # lima-destaque dos tokens
+CLARO = "#F6D9A8"  # contorno-painel dos tokens
+
+
+def test_lima_fora_dos_tokens_reprova_e_do_token_passa(tokens):
+    assert tk.cor(tokens, "lima-destaque") == LIMA
+    assert regras(problemas("a.css", ".valor { color: #B6F23B; }", tokens)) == {"hex"}
+    assert problemas("a.css", f".valor {{ color: {LIMA}; }}", tokens) == []
+
+
+@pytest.mark.parametrize("nome,texto", [
+    ("a.css", f".cn-painel-letreiro {{ border: 3px solid {CLARO}; }}"),
+    ("a.css", ".cn-painel-letreiro { outline: 2px solid var(--cn-cor-contorno-painel); }"),
+    ("a.svg", f'<path class="cn-painel-letreiro" stroke="{CLARO}"/>'),
+])
+def test_contorno_claro_passa_no_painel_letreiro(tokens, nome, texto):
+    assert problemas(nome, texto, tokens) == []
+
+
+@pytest.mark.parametrize("nome,texto", [
+    ("a.css", f".cartao {{ border: 3px solid {CLARO}; }}"),
+    ("a.css", ".cartao { outline: 2px solid var(--cn-cor-contorno-painel); }"),
+    ("a.svg", f'<rect class="cartao" stroke="{CLARO}"/>'),
+    ("a.html", f'<div style="border:2px solid {CLARO}">x</div>'),
+])
+def test_contorno_claro_fora_do_painel_reprova(tokens, nome, texto):
+    assert "contorno" in regras(problemas(nome, texto, tokens))
+
+
+def test_contorno_de_texto_claro_segue_reprovado(tokens):
+    assert "contorno" in regras(problemas("a.css", f".cn-painel-letreiro {{ -webkit-text-stroke: 2px {CLARO}; }}", tokens))

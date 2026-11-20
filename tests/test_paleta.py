@@ -1,4 +1,4 @@
-"""Paleta deslocada (ADR-0007): 62 hex, longe do conceito e do prompt, distintos entre si."""
+"""Paleta deslocada (ADR-0007): 71 hex, longe do conceito e do prompt, distintos entre si."""
 import itertools
 
 from cn import tokens as tk
@@ -17,8 +17,8 @@ def evitar():
     return [x.strip() for x in (DADOS / "evitar-hex.txt").read_text(encoding="utf-8").splitlines() if x.startswith("#") and len(x.strip()) == 7]
 
 
-def test_62_hex_distintos(tokens):
-    assert len(tk.hex_permitidos(tokens)) == 62
+def test_71_hex_distintos(tokens):
+    assert len(tk.hex_permitidos(tokens)) == 71
 
 
 def test_longe_do_conceito_e_do_prompt(tokens):

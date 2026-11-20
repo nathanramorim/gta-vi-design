@@ -51,7 +51,7 @@ Consulte `sdd/memory/mcps.md` para o status real de cada MCP configurado (`ativo
 12. A IA escreve dados (variáveis, receita, modo), nunca CSS ou hex soltos; o que é determinístico vira script (`tokens build`, `validar`, `render telas`, `prompt`) e os prompts de IA usam esses scripts como ferramentas. (`ARQ-06`)
 13. Documentação: README pelo readme-studio com `## Requisitos` e o bloco "Cole isto na sua IA" do motor requisitos-para-ia v0.1.0 (`scripts/requisitos.py`, `bootstrap.sh`, `bootstrap.ps1`, `requisitos.toml`, `skills.lock`); diagramas pela skill `diagramas-c4-mermaid` com o motor diagram-studio (SVG/PNG escuro), Mermaid só como reserva declarada; release notes em `sdd/releases/history.md`. (`FLX-07`, ADR-0006)
 14. Tasks em `sdd/discovery/<id>-<nome>/features/`; telemetria no Close (`forge session record`); versão `-beta` nunca vai para `main` (tag na branch, PR aberto). (`FLX-02`, `FLX-04`, `FLX-07`)
-15. Entrada validada na borda (hex `#RRGGBB`, variáveis com tamanho e caracteres limitados, `{FORMATO}` em `16:9|1:1|9:16`, modo `1..6`, slug); escrita só em `--saida`; `--validar` não grava. (`SEG-01`, `SEG-02`, `ARQ-05`)
+15. Entrada validada na borda (hex `#RRGGBB`, variáveis com tamanho e caracteres limitados, `{FORMATO}` em `16:9|1:1|9:16|4:5` (ADR-0008), modo `1..6`, slug); escrita só em `--saida`; `--validar` não grava. (`SEG-01`, `SEG-02`, `ARQ-05`)
 
 <!-- forge-sdd-governanca:inicio versao=3.0.0-beta -->
 ## IDs Canônicos da Constituição (O Quê e Por Quê)

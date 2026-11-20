@@ -6,6 +6,7 @@ O texto vem dos dados desta pasta; o comando `prompt` monta tudo. Não copie hex
 |---|---|
 | `estilo.txt` | BLOCO DE ESTILO (inglês), abre todo prompt de imagem |
 | `receitas.json` | personagem por foto, personagem aleatório, cenário e imagem temática |
+| `cenario-letreiro.json` | listas da cena de letreiro: moldura de silhuetas, céu, skyline, ponte, carro e helicóptero (`prompt --cena letreiro --semente N`, fundo sem texto) |
 | `listas.json` | listas de sorteio; `PESSOA` varia gênero, origem e idade entre personagens |
 | `tematica.json` | temas da imagem temática e a montagem de cada formato |
 | `escrita.json` | regras de texto (modo 5) |

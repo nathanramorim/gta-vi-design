@@ -18,6 +18,9 @@ def gerar(t: dict) -> str:
     v += [(f"peso-{k}", str(p)) for k, p in tip["pesos"].items()]
     v += [("titulo-espacamento", tip["titulo-espacamento"]), ("corpo-entrelinha", str(tip["corpo-entrelinha"])),
           ("display-contorno", f"{tip['display-contorno-px'][0]}px")]
+    for k, est in tip.get("estilos", {}).items():
+        v += [(f"{k}-contorno", f"{est['contorno-px'][-1]}px"), (f"{k}-inclinacao", f"{est['inclinacao-graus']}deg"),
+              (f"{k}-espacamento", est["espacamento"]), (f"{k}-entrelinha", str(est["entrelinha"]))]
     e = t["espacamento"]
     v += [("espaco-base", f"{e['base-px']}px"), ("margem-lateral", e["margem-lateral"]),
           ("barra-altura", e["barra-altura"]), ("barra-altura-post", e["barra-altura-post"])]

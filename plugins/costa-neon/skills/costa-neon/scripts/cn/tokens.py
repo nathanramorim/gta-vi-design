@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from functools import partial
 from pathlib import Path
 
 from cn.entrada import RE_HEX, SKILL, ErroDados
@@ -22,6 +23,11 @@ def carregar(caminho: Path | None = None) -> dict:
 
 def cor(t: dict, nome: str) -> str:
     return t["cores"][nome]["valor"]
+
+
+def cor_de(t: dict):
+    """Atalho `c(nome)` para a cor `nome` dos tokens `t` (sem lambda, DUP-05)."""
+    return partial(cor, t)
 
 
 def paradas(t: dict, nome: str) -> list[str]:

@@ -1,0 +1,6 @@
+{
+  "veredito": "conforme",
+  "achados": [],
+  "candidate_skill": null,
+  "resumo": "Camada A ok. Prompt só com listas genéricas e hex dos tokens (_ceu_hex), sem nome de obra; termos bloqueados guardados só como SHA-256 (a lista legível fica em tests/dados, ADR-0002); mesma semente dá o mesmo texto; receita letreiro pede imagem sem texto. Sem achados."
+}

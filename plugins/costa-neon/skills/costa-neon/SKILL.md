@@ -15,9 +15,11 @@ Design system replicável. Você **não escreve hex nem CSS à mão**: chama o s
 | CSS dos tokens | `uv run "$CN" tokens build` (o arquivo fica em `tokens/costa-neon.css`) |
 | Conferir uma peça ou pasta | `uv run "$CN" validar <caminho>`; código 2 lista o que está fora |
 | Tema de uma ferramenta | `uv run "$CN" tema carrossel|video|readme|forge-sdd|todos --saida <pasta> --previa` |
-| Prompt de imagem ou texto | `uv run "$CN" prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16]` |
+| Prompt de imagem ou texto | `uv run "$CN" prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16|4:5]` |
 
-Modos do `prompt`: 1 design system, 2 personagem por foto (só com `--foto-autorizada`), 3 personagem aleatório, 4 cenário, 5 escrita (`--tipo`), 6 imagem temática (`--tema`, `--descricao`). Detalhes em `ilustracao/GUIA.md`.
+Modos do `prompt`: 1 design system, 2 personagem por foto (só com `--foto-autorizada`), 3 personagem aleatório, 4 cenário, 5 escrita (`--tipo`), 6 imagem temática (`--tema`, `--descricao`). `prompt --cena letreiro --semente N` monta o fundo de peça (moldura de silhuetas, sem texto na imagem). Detalhes em `ilustracao/GUIA.md`.
+
+Peça de letreiro: `render peca --saida <pasta> [--formato 4:5|1:1|todos] [--semente N]` gera o PNG (1080x1350 e 1080x1080) com título, 2 painéis, faixa de chamada e rodapé sobre fundo SVG próprio; `render amostra` mostra só o título. Precisa do Chrome local (`COSTA_NEON_CHROME` aponta outro).
 
 ## Como trabalhar
 1. Pegue `{MARCA}`, `{CIDADE}`, `{IDIOMA}` e `{FORMATO}` da pessoa; sem resposta, use os padrões do `tokens.json` (nomes fictícios).
