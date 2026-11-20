@@ -1,0 +1,84 @@
+{
+  "feature_id": "",
+  "branch": "",
+  "spec_status": "reviewed",
+  "updated_at": "2026-11-20T12:54:37Z",
+  "items": [
+    {
+      "task_id": "02-01",
+      "title": "feat-02-01-paleta-e-contraste — Paleta e contraste de letreiro",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-01-paleta-e-contraste.md",
+      "status": "approved",
+      "rules": [
+        "DUP-01",
+        "DUP-04",
+        "TST-01",
+        "COD-02"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A ok (112 testes, tokens build --checar, validar, ruff). Hex novos só em tokens.json; exceção do contorno claro lida do token e restrita ao painel-letreiro; função única de contraste. Nota: a regra 'um lima por peça' é só texto de uso, sem checagem automática (fora dos critérios da spec)."
+      }
+    },
+    {
+      "task_id": "02-02",
+      "title": "feat-02-02-tipografia-letreiro — Tipografia de letreiro",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-02-tipografia-letreiro.md",
+      "status": "approved",
+      "rules": [
+        "SEG-07",
+        "DUP-04",
+        "TST-01",
+        "GOV-01"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A ok (forge gate 0, validar 0, ruff ok, 114 testes). Achado r1 tratado: README (linha 54 e Segurança) agora diz que só o render baixa as fontes OFL para ~/.cache/costa-neon/fontes. Sem outras mudanças em cn/fontes.py."
+      }
+    },
+    {
+      "task_id": "02-03",
+      "title": "feat-02-03-fundos-e-cenarios — Fundos e cenários para imagem",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-03-fundos-e-cenarios.md",
+      "status": "approved",
+      "rules": [
+        "ARQ-06",
+        "SEG-01",
+        "TST-03",
+        "DUP-03"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A ok. Prompt só com listas genéricas e hex dos tokens (_ceu_hex), sem nome de obra; termos bloqueados guardados só como SHA-256 (a lista legível fica em tests/dados, ADR-0002); mesma semente dá o mesmo texto; receita letreiro pede imagem sem texto. Sem achados."
+      }
+    },
+    {
+      "task_id": "02-04",
+      "title": "feat-02-04-peca-de-letreiro — Peça de letreiro (cartaz e post)",
+      "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-04-peca-de-letreiro.md",
+      "status": "approved",
+      "rules": [
+        "TST-01",
+        "DUP-03",
+        "SEG-07",
+        "ARQ-06"
+      ],
+      "skills_used": [],
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Os dois residuos baixos do r2 foram tratados no commit 1c82a2d. A Ajuda do prompt e o SKILL.md listam 4:5, e tokens.formatos inclui 4:5. A ordem do decisions.md foi arrumada. Camada A ok: gate 0, ruff ok, 114 testes, validar 0, tokens build --checar ok."
+      }
+    }
+  ]
+}

@@ -6,10 +6,12 @@ import random
 from dataclasses import dataclass, field
 
 from cn import entrada, termos
+from cn import tokens as tk
 from cn.entrada import SKILL, ErroDados
 
 PASTA = SKILL / "ilustracao"
 SORTEIO = ("PESSOA", "ARQUETIPO", "IDADE", "CORPO", "CABELO", "ROUPA", "ACESSORIO", "POSE", "LUGAR", "HORA", "LADO")
+CENAS = ("letreiro",)
 TIPOS_ESCRITA = ("lettering", "rotulo", "sinopse", "menu", "dica", "descricao")
 
 
@@ -37,6 +39,27 @@ def limpar(nome: str, valor: str, maximo: int = 80) -> str:
     if termos.achar(valor):
         raise ErroDados(f"{nome}: tem nome de obra, marca ou fonte existente; use nomes inventados")
     return valor
+
+
+def _ceu_hex(t: dict) -> str:
+    h = tk.paradas(t, "ceu-letreiro")
+    return f"from {h[0]} at the top through {', '.join(h[1:-1])} to {h[-1]} at the horizon"
+
+
+def montar_cena(cena: str, *, variaveis: dict, semente: int | None = None, formato: str | None = None) -> Resultado:
+    """Cena `letreiro`: fundo de peça com moldura de silhuetas, sem texto na imagem (receita `letreiro`)."""
+    if cena not in CENAS:
+        raise ErroDados(f"--cena deve ser uma de {', '.join(CENAS)}")
+    semente = semente if semente is not None else random.SystemRandom().randrange(1, 10**6)
+    rnd = random.Random(semente)
+    listas = _json("cenario-letreiro.json")
+    valores = {k: rnd.choice(v) for k, v in listas.items()}
+    valores |= {"CEU_HEX": _ceu_hex(tk.carregar()), "CIDADE": limpar("CIDADE", variaveis["CIDADE"]),
+                "FORMATO": entrada.formato(formato or "1:1")}
+    texto = estilo() + "\n" + _preencher(_json("receitas.json")[cena], valores)
+    montagem = ("Peça 4:5 (1080x1350) ou 1:1: recorte centralizado do fundo; título, painéis e faixa de chamada entram por HTML, "
+                "nunca pela IA de imagem. A imagem vem sem texto.")
+    return Resultado(6, texto, semente, valores, montagem, ["A cena é sorteada pela semente; a mesma semente dá o mesmo texto."])
 
 
 def _preencher(modelo: str, valores: dict) -> str:

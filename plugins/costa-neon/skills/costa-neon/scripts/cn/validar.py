@@ -1,7 +1,7 @@
 """validar: confere os artefatos contra os tokens e as regras do Costa Neon (regras 4 e 8).
 
 Checagens: hex fora do tokens.json, preto puro, sombra que não é roxa ou azul (brilho `0 0 Npx` é livre),
-contorno que não é a tinta, tela sem barras e linha neon, e termo bloqueado (nome de obra existente).
+contorno que não é a tinta (o contorno claro só vale no painel-letreiro), tela sem barras e linha neon, e termo bloqueado (nome de obra existente).
 """
 from __future__ import annotations
 
@@ -27,6 +27,7 @@ RE_PRETO = re.compile(r"(?::\s*|=\s*\")black\b|rgba?\(\s*0\s*,\s*0\s*,\s*0\b", r
 RE_SOMBRA = re.compile(r"(?:box-shadow|text-shadow)\s*:\s*([^;}\"]+)|drop-shadow\(((?:[^()]|\([^()]*\))*)\)", re.IGNORECASE)
 RE_STROKE_TEXTO = re.compile(r"-webkit-text-stroke(?:-color)?\s*:\s*([^;}\"]+)", re.IGNORECASE)
 RE_STROKE_SVG = re.compile(rf"\bstroke\s*[=:]\s*\"?\s*({HEX}|rgba?\([^)]*\))", re.IGNORECASE)
+RE_CONTORNO_CLARO = r"(?:border[\w-]*|outline[\w-]*|stroke)\s*[:=]\s*\"?[^;}>\"]*?"
 RE_SOMBRA_JSON = re.compile(r"\"sombras\"\s*:\s*\{(.*?)\n\s{0,4}\}", re.DOTALL)
 
 
@@ -81,6 +82,29 @@ def _sombra(camada: str) -> str | None:
     return None
 
 
+def _contexto(texto: str, pos: int) -> str:
+    """Seletor CSS ou tag que contém a posição (para saber se está dentro do painel-letreiro)."""
+    antes = texto[:pos]
+    chave, tag = antes.rfind("{"), antes.rfind("<")
+    if chave > tag:
+        return antes[antes.rfind("}", 0, chave) + 1:chave]
+    return antes[max(tag, 0):]
+
+
+def _contorno_claro(texto: str, t: dict) -> list[tuple[int, str]]:
+    """Posições do contorno claro (exceção declarada nos tokens) usado fora do painel que a autoriza."""
+    exc = t.get("excecoes", {}).get("contorno-claro")
+    if not exc:
+        return []
+    nome = tk.cor(t, exc["cor"])
+    alvo = rf"(?:{re.escape(nome)}|var\(\s*--cn-cor-{re.escape(exc['cor'])}\s*\))"
+    achados = []
+    for m in re.finditer(RE_CONTORNO_CLARO + alvo, texto, re.IGNORECASE):
+        if exc["so-em"] not in _contexto(texto, m.start()):
+            achados.append((m.start(), f"contorno claro {nome} só é permitido em {exc['so-em']} (exceção da Regra 8)"))
+    return achados
+
+
 def _linha(texto: str, pos: int) -> int:
     return texto.count("\n", 0, pos) + 1
 
@@ -117,6 +141,9 @@ def conferir_texto(nome: str, texto: str, sufixo: str, t: dict, permitidos: set[
             rgb = _rgb(m.group(1))
             if rgb and colorsys.rgb_to_hls(*(x / 255 for x in rgb))[1] < 0.2 and m.group(1).upper() != tinta:
                 add(m.start(), "contorno", f"contorno escuro deve ser a tinta {tinta}")
+    if sufixo in VISUAIS:
+        for pos, det in _contorno_claro(texto, t):
+            add(pos, "contorno", det)
     if sufixo == ".html" and "telas" in Path(nome).parts:
         if "cn-barra-topo" not in texto or "cn-barra-base" not in texto:
             add(0, "tela", "tela sem as barras de topo e base (cn-barra-topo, cn-barra-base)")

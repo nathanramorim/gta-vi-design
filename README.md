@@ -51,7 +51,7 @@ Só o `uv` (os scripts usam apenas a biblioteca padrão do Python) e, enquanto o
 | ↳ macOS | `sh scripts/bootstrap.sh` | Instalador oficial do `uv` (sem sudo), com o seu ok; Homebrew é só uma opção, se você já tiver. |
 | ↳ Linux | `sh scripts/bootstrap.sh` | Instalador oficial do `uv`; `pacman` ou `dnf` quando houver. `git` e `gh` pelo gerenciador da distro. |
 | ↳ Windows | `powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1` | Instalador oficial do `uv`, ou `winget`, `scoop` e `choco`. O `winget` pede a você o aceite dos termos. |
-| **Downloads na primeira execução** | Nenhum | Os comandos de hoje não baixam nada. Quando as telas existirem: fontes abertas do fontsource em `~/.cache/costa-neon/fontes`, uma vez. |
+| **Downloads na primeira execução** | Nenhum | Só o `render` baixa: as fontes abertas (OFL) do fontsource, uma vez, para `~/.cache/costa-neon/fontes`. Os demais comandos não baixam nada. |
 | **Contas e chaves** | Conta no GitHub com acesso a este repositório privado | `gh auth login` é com você; a IA nunca digita senha nem token. Nenhuma chave fica no repositório. |
 | **Máquina** | Qualquer computador que rode o `uv` | Sem requisito de memória ou GPU. |
 | **Licenças e limites de uso** | Código MIT; fontes previstas todas OFL-1.1 | Bowlby One, Josefin Sans, Outfit, Kaushan Script, Zilla Slab, Anton, Oswald e JetBrains Mono (conferido no fontsource em 19/11/2026). |
@@ -104,7 +104,7 @@ Guia de ilustração e os 6 modos: [`plugins/costa-neon/skills/costa-neon/ilustr
 
 ## Segurança e privacidade
 
-- Nenhum segredo no repositório; os scripts não acessam a internet nem enviam nada.
+- Nenhum segredo no repositório; só o `render` acessa a internet, para baixar as fontes OFL do fontsource uma vez para o cache; o resto roda offline e nada é enviado.
 - `tema` só escreve na pasta `--saida`; `--validar` não grava nada.
 - Prompts de imagem nunca citam obra, marca ou personagem existente; o script recusa nomes conhecidos.
 - Foto de pessoa só com autorização dela, só adultos, sem figuras públicas. A autorização é sua, nunca da IA.

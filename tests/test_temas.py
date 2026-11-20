@@ -106,3 +106,13 @@ def test_banner_do_readme_usa_o_tema(tokens):
     assert json.loads((d / "identidade.json").read_text(encoding="utf-8")) == temas.identidade(tokens)
     assert (d / "logo.svg.frag").read_text(encoding="utf-8") == logo.fragmento(tokens) + "\n"
     assert (d / "ilustracao.svg.frag").read_text(encoding="utf-8") == banner.ilustracao(tokens)
+
+
+# 02-04: cores e fontes de letreiro nos temas
+def test_marca_e_forge_sdd_levam_o_letreiro(tokens):
+    m, f = temas.marca(tokens), temas.forge_sdd(tokens)
+    assert m["letreiro"] == f["letreiro"]
+    assert set(m["letreiro"]["cores"].values()) | set(m["letreiro"]["ceu"]) <= tk.hex_permitidos(tokens)
+    assert m["letreiro"]["fontes"] == {"titulo": "Anton", "corpo": "Barlow Condensed"}
+    assert f["fontes"]["letreiro-corpo"] == "Barlow Condensed" and "ceu-letreiro" in f["degrades"]
+    assert set(m["cores"]) == {"bg", "surface", "text", "muted", "accent", "accent2", "success", "danger"}  # papéis do carrossel intactos

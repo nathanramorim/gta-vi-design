@@ -1,0 +1,6 @@
+{
+  "veredito": "conforme",
+  "achados": [],
+  "candidate_skill": null,
+  "resumo": "Camada A ok (forge gate 0, validar 0, ruff ok, 114 testes). Achado r1 tratado: README (linha 54 e Segurança) agora diz que só o render baixa as fontes OFL para ~/.cache/costa-neon/fontes. Sem outras mudanças em cn/fontes.py."
+}
