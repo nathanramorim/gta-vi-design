@@ -33,3 +33,17 @@ def test_minimos_sao_os_da_wcag(tokens):
 def test_lima_e_um_so_e_vive_no_painel(tokens):
     lima = tk.cor(tokens, "lima-destaque")
     assert contraste.razao(lima, tk.cor(tokens, "painel-letreiro")) >= 4.5
+
+
+def test_titulo_passa_contra_o_fundo_realmente_atras(tokens):
+    """O título só tem atrás a faixa `fundo` do estilo (o contorno na tinta não conta); cada linha precisa de >= 3:1 e estar declarada."""
+    e = tokens["tipografia"]["estilos"]["titulo-letreiro"]
+    declarados = {(p["texto"], p["fundo"]) for p in tokens["contraste"]["pares"] if p["papel"] == "titulo"}
+    for linha in ("linha-1", "linha-2"):
+        assert (e[linha], e["fundo"]) in declarados
+        assert contraste.razao(tk.cor(tokens, e[linha]), tk.cor(tokens, e["fundo"])) >= tokens["contraste"]["minimo-titulo"]
+
+
+def test_titulo_nao_cai_sobre_paradas_do_ceu(tokens):
+    """Nenhum par de título declara o céu como fundo: ele fica sobre a faixa escura, não no degradê."""
+    assert not [p for p in tokens["contraste"]["pares"] if p["papel"] == "titulo" and p["fundo"].startswith("ceu-letreiro")]

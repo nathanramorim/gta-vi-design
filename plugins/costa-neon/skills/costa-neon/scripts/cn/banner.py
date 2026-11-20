@@ -13,7 +13,7 @@ FOLHAS = "q-30 -4 -46 14 M{x} {y} q-20 -22 -44 -18 M{x} {y} q10 -26 36 -26 M{x} 
 
 
 def ilustracao(t: dict) -> str:
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     cx, cy, r = SOL
     defs = (f'<defs><linearGradient id="cnceu" x1="0" y1="0" x2="0" y2="1">{paradas_svg(tk.paradas(t, "ceu"))}</linearGradient>'
             f'<linearGradient id="cnsol2" x1="0" y1="0" x2="0" y2="1">{paradas_svg(tk.paradas(t, "sol"))}</linearGradient>'

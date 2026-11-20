@@ -1,0 +1,18 @@
+{
+  "veredito": "violacao",
+  "achados": [
+    {
+      "verificacao": "S-05",
+      "regra": "FLX-07",
+      "classificacao": "violacao",
+      "severidade": "baixa",
+      "arquivo": "README.md",
+      "linha": 54,
+      "evidencia": "Os comandos de hoje não baixam nada.",
+      "explicacao": "A task 02-02 introduziu cn/fontes.py, que baixa fontes do fontsource no render (Regra 11). O README segue afirmando que nada é baixado e (linha 107) que os scripts não acessam a internet, o que ficou falso (Regra 13).",
+      "correcao": "Atualizar as linhas 54 e 107 do README (via readme-studio) para citar o download único das fontes para ~/.cache/costa-neon/fontes."
+    }
+  ],
+  "candidate_skill": null,
+  "resumo": "Camada A ok. Fontes OFL com versão fixa nos tokens, host restrito ao fontsource, sem Pricedown nem marca. Único achado: README desatualizado sobre downloads e acesso à internet."
+}

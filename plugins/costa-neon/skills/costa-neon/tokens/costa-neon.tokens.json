@@ -401,9 +401,10 @@
         "inclinacao-graus": -3,
         "linha-1": "branco",
         "linha-2": "rosa-letreiro",
+        "fundo": "painel-letreiro",
         "espacamento": "0.02em",
         "entrelinha": 0.95,
-        "uso": "título do letreiro: duas linhas, a 1 branca e a 2 rosa-letreiro, contorno na tinta e sombra dura roxa"
+        "uso": "título do letreiro: duas linhas, a 1 branca e a 2 rosa-letreiro sobre faixa escura (painel-letreiro), contorno na tinta e sombra dura roxa"
       }
     }
   },
@@ -503,30 +504,15 @@
       },
       {
         "texto": "branco",
-        "fundo": "ceu-letreiro:0",
-        "papel": "titulo"
-      },
-      {
-        "texto": "branco",
-        "fundo": "ceu-letreiro:1",
+        "fundo": "painel-letreiro",
         "papel": "titulo"
       },
       {
         "texto": "rosa-letreiro",
-        "fundo": "ceu-letreiro:0",
-        "papel": "titulo"
-      },
-      {
-        "texto": "branco",
-        "fundo": "tinta",
-        "papel": "titulo"
-      },
-      {
-        "texto": "rosa-letreiro",
-        "fundo": "tinta",
+        "fundo": "painel-letreiro",
         "papel": "titulo"
       }
     ],
-    "uso": "pares texto/fundo do letreiro; o título fica na metade de cima do céu (paradas 0 e 1) e o contorno na tinta o separa do fundo"
+    "uso": "pares texto/fundo do letreiro; o título (linhas 1 e 2) fica sobre uma faixa escura painel-letreiro, nunca direto sobre o céu; o contorno na tinta não conta como fundo"
   }
 }

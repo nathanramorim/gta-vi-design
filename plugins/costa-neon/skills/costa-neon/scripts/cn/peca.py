@@ -15,9 +15,6 @@ FORMATOS = {"4:5": (1080, 1350), "1:1": (1080, 1080)}
 # posições em fração da altura: título, painéis, horizonte, faixa, rodapé
 LAYOUT = {"4:5": {"titulo": 60, "fonte": 150, "painel": (500, 300), "horizonte": 470, "faixa": (840, 82), "rodape": 90, "carro": 1045},
           "1:1": {"titulo": 30, "fonte": 104, "painel": (372, 300), "horizonte": 350, "faixa": (700, 70), "rodape": 80, "carro": 815}}
-# Pares texto/fundo que a peça usa: todos precisam existir em `contraste.pares` dos tokens (e passam no teste).
-PARES_USADOS = (("branco", "painel-letreiro"), ("rosa-valor", "painel-letreiro"), ("tinta", "lima-destaque"), ("tinta", "rosa-letreiro"),
-                ("branco", "tinta"), ("rosa-letreiro", "tinta"))
 CONTEUDO = {"titulo1": "Nova missão", "titulo2": "desbloqueada", "painel1-titulo": "A rota", "painel1-texto": "Três paradas na orla antes do pôr do sol.",
             "painel2-titulo": "A oferta", "painel2-texto": "Passe da temporada com acesso a todas as rotas.", "valor": "Só 49,90",
             "chamada": "Garanta o seu agora", "marca": "Palmarena Studio", "cidade": "Palmarena"}
@@ -62,7 +59,7 @@ def fundo_svg(t: dict, formato: str, semente: int) -> str:
     rnd = random.Random(semente)
     hz = lay["horizonte"]
     ceu = tk.paradas(t, "ceu-letreiro")
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     stops = lambda ps: "".join(f'<stop offset="{i / (len(ps) - 1):.3f}" stop-color="{p}"/>' for i, p in enumerate(ps))  # noqa: E731
     sol = tk.paradas(t, "sol")
     partes = [f'<svg xmlns="http://www.w3.org/2000/svg" class="cn-fundo" width="{w}" height="{h}" viewBox="0 0 {w} {h}">',
@@ -97,7 +94,7 @@ def _css_painel(t: dict) -> str:
 def pagina(t: dict, formato: str, conteudo: dict[str, str], semente: int) -> str:
     w, h = FORMATOS[formato]
     lay = LAYOUT[formato]
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     corpo = t["tipografia"]["familias"]["letreiro-corpo"]["pilha"]
     py, ph = lay["painel"]
     fy, fh = lay["faixa"]
@@ -105,7 +102,7 @@ def pagina(t: dict, formato: str, conteudo: dict[str, str], semente: int) -> str
     sombra = t["sombras"]["titulo-letreiro"]["valor"]
     estilo = (f"html, body {{ margin: 0; width: {w}px; height: {h}px; overflow: hidden; font-family: {corpo}; }}\n"
               f".cn-fundo {{ position: absolute; left: 0; top: 0; }}\n"
-              f".cn-titulo-letreiro {{ position: absolute; left: 0; right: 0; top: {lay['titulo']}px; text-align: center; font-size: {lay['fonte']}px; }}\n"
+              f".cn-titulo-letreiro {{ position: absolute; left: -40px; right: -40px; top: {lay['titulo']}px; text-align: center; font-size: {lay['fonte']}px; }}\n"
               f".cn-paineis {{ position: absolute; left: 56px; right: 56px; top: {py}px; height: {ph}px; display: flex; gap: 34px; }}\n"
               f".cn-paineis .cn-painel-letreiro {{ flex: 1; }}\n"
               f".cn-painel-miolo h2 {{ margin: 0 0 12px; font-size: 40px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: {c('rosa-valor')}; }}\n"
@@ -126,10 +123,12 @@ def pagina(t: dict, formato: str, conteudo: dict[str, str], semente: int) -> str
             f'<div class="cn-rodape"><span>{e("marca")}</span><span>{e("cidade")}</span></div></body></html>\n')
 
 
+def pares_usados(t: dict) -> list[tuple[str, str]]:
+    """Pares texto/fundo da peça: lidos de `contraste.pares` dos tokens (uma definição só)."""
+    return [(p["texto"], p["fundo"]) for p in t["contraste"]["pares"]]
+
+
 def checar_pares(t: dict) -> list[str]:
-    """Pares usados pela peça que não estão (ou não passam) em `contraste.pares` dos tokens."""
+    """Pares de `contraste.pares` que não passam no mínimo exigido."""
     from cn import contraste
-    declarados = {(p["texto"], p["fundo"]): (r, m) for p, r, m in contraste.pares(t)}
-    return [f"{a}/{b}" for a, b in PARES_USADOS if (a, b) not in declarados or declarados[(a, b)][0] < declarados[(a, b)][1]]
-
-
+    return [f"{p['texto']}/{p['fundo']}" for p, r, m in contraste.pares(t) if r < m]

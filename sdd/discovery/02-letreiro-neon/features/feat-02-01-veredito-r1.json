@@ -1,0 +1,6 @@
+{
+  "veredito": "conforme",
+  "achados": [],
+  "candidate_skill": null,
+  "resumo": "Camada A ok (112 testes, tokens build --checar, validar, ruff). Hex novos só em tokens.json; exceção do contorno claro lida do token e restrita ao painel-letreiro; função única de contraste. Nota: a regra 'um lima por peça' é só texto de uso, sem checagem automática (fora dos critérios da spec)."
+}

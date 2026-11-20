@@ -15,7 +15,7 @@ def estilo_titulo(t: dict) -> str:
     sombra = t["sombras"][e["sombra"]]["valor"]
     return (f".cn-titulo-letreiro {{ font-family: {fam['pilha']}; text-transform: uppercase; letter-spacing: {e['espacamento']};"
             f" line-height: {e['entrelinha']}; transform: rotate({e['inclinacao-graus']}deg); -webkit-text-stroke: {2 * px}px {tk.cor(t, e['contorno'])};"
-            f" paint-order: stroke fill; text-shadow: {sombra}; margin: 0; }}\n"
+            f" paint-order: stroke fill; text-shadow: {sombra}; margin: 0; background: {tk.cor(t, e['fundo'])}; padding: 0.1em 0; }}\n"
             f".cn-titulo-letreiro .l1 {{ display: block; color: {tk.cor(t, e['linha-1'])}; }}\n"
             f".cn-titulo-letreiro .l2 {{ display: block; color: {tk.cor(t, e['linha-2'])}; }}\n")
 

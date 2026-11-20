@@ -33,7 +33,7 @@ def letreiro(t: dict) -> dict:
 def marca(t: dict, logo_em: str = "marca/logo.svg") -> dict:
     """Arquivo de marca do carrossel-studio e do gerador-videos (mesmos papéis). `logo_em` é relativo a quem lê."""
     fam = t["tipografia"]["familias"]
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     return {"cores": {"bg": c("preto-barra"), "surface": c("chip-escuro"), "text": c("branco"), "muted": c("rosa-valor"),
                       "accent": tk.paradas(t, "acento")[1], "accent2": c("laranja-selecao"), "success": c("mapa-parque"),
                       "danger": c("atributo-perda")},
@@ -42,7 +42,7 @@ def marca(t: dict, logo_em: str = "marca/logo.svg") -> dict:
 
 
 def identidade(t: dict) -> dict:
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     fam = t["tipografia"]["familias"]
     return {"fundo": c("preto-barra"), "brilho": c("ameixa"), "texto": c("branco"), "suave": c("rosa-valor"),
             "acento": tk.paradas(t, "acento"), "painel": c("chip-escuro"), "borda": c("malva-escuro"),
@@ -51,7 +51,7 @@ def identidade(t: dict) -> dict:
 
 
 def forge_sdd(t: dict) -> dict:
-    c = lambda n: tk.cor(t, n)  # noqa: E731
+    c = tk.cor_de(t)
     fam = t["tipografia"]["familias"]
     return {"tema": t["sistema"], "edicao": "Edição Missões", "versao_tokens": t["versao"],
             "missoes": [{"n": i, "estacao": e, "titulo": ti, "cor": c(cor)} for i, (e, ti, cor) in enumerate(MISSOES, 1)],

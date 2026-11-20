@@ -2,13 +2,13 @@
   "feature_id": "",
   "branch": "",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-20T11:08:23Z",
+  "updated_at": "2026-11-20T11:17:42Z",
   "items": [
     {
       "task_id": "02-01",
       "title": "feat-02-01-paleta-e-contraste — Paleta e contraste de letreiro",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-01-paleta-e-contraste.md",
-      "status": "review_pending",
+      "status": "approved",
       "rules": [
         "DUP-01",
         "DUP-04",
@@ -16,13 +16,18 @@
         "COD-02"
       ],
       "skills_used": [],
-      "attempts": 1
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A ok (112 testes, tokens build --checar, validar, ruff). Hex novos só em tokens.json; exceção do contorno claro lida do token e restrita ao painel-letreiro; função única de contraste. Nota: a regra 'um lima por peça' é só texto de uso, sem checagem automática (fora dos critérios da spec)."
+      }
     },
     {
       "task_id": "02-02",
       "title": "feat-02-02-tipografia-letreiro — Tipografia de letreiro",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-02-tipografia-letreiro.md",
-      "status": "review_pending",
+      "status": "changes_requested",
       "rules": [
         "SEG-07",
         "DUP-04",
@@ -30,13 +35,30 @@
         "GOV-01"
       ],
       "skills_used": [],
-      "attempts": 1
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "violacao",
+        "achados": [
+          {
+            "verificacao": "S-05",
+            "regra": "FLX-07",
+            "classificacao": "violacao",
+            "severidade": "baixa",
+            "arquivo": "README.md",
+            "linha": 54,
+            "evidencia": "Os comandos de hoje não baixam nada.",
+            "explicacao": "A task 02-02 introduziu cn/fontes.py, que baixa fontes do fontsource no render (Regra 11). O README segue afirmando que nada é baixado e (linha 107) que os scripts não acessam a internet, o que ficou falso (Regra 13).",
+            "correcao": "Atualizar as linhas 54 e 107 do README (via readme-studio) para citar o download único das fontes para ~/.cache/costa-neon/fontes."
+          }
+        ],
+        "resumo": "Camada A ok. Fontes OFL com versão fixa nos tokens, host restrito ao fontsource, sem Pricedown nem marca. Único achado: README desatualizado sobre downloads e acesso à internet."
+      }
     },
     {
       "task_id": "02-03",
       "title": "feat-02-03-fundos-e-cenarios — Fundos e cenários para imagem",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-03-fundos-e-cenarios.md",
-      "status": "review_pending",
+      "status": "approved",
       "rules": [
         "ARQ-06",
         "SEG-01",
@@ -44,7 +66,12 @@
         "DUP-03"
       ],
       "skills_used": [],
-      "attempts": 1
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Camada A ok. Prompt só com listas genéricas e hex dos tokens (_ceu_hex), sem nome de obra; termos bloqueados guardados só como SHA-256 (a lista legível fica em tests/dados, ADR-0002); mesma semente dá o mesmo texto; receita letreiro pede imagem sem texto. Sem achados."
+      }
     },
     {
       "task_id": "02-04",
@@ -58,7 +85,62 @@
         "ARQ-06"
       ],
       "skills_used": [],
-      "attempts": 1
+      "attempts": 1,
+      "governance_verdict": {
+        "veredito": "duvida",
+        "achados": [
+          {
+            "verificacao": "S-05",
+            "regra": "Regra 15",
+            "classificacao": "duvida",
+            "severidade": "media",
+            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/peca.py",
+            "linha": 14,
+            "evidencia": "FORMATOS = {\"4:5\": (1080, 1350), \"1:1\": (1080, 1080)}",
+            "explicacao": "A Regra 15 lista {FORMATO} como 16:9|1:1|9:16 e a tabela 'Divergências conhecidas' diz que não há divergência. O 4:5 vem da spec, mas entra por um caminho paralelo (choices do argparse) sem o registro da divergência.",
+            "correcao": "Registrar a divergência (ou ADR + ajuste da Regra 15, GOV-01) para o formato 4:5 da peça."
+          },
+          {
+            "verificacao": "S-05",
+            "regra": "TST-01",
+            "classificacao": "duvida",
+            "severidade": "media",
+            "arquivo": "plugins/costa-neon/skills/costa-neon/tokens/costa-neon.tokens.json",
+            "linha": 403,
+            "evidencia": "\"linha-2\": \"rosa-letreiro\"",
+            "explicacao": "A linha 2 do título (#FF5CB4) cai no meio do céu; contra a parada 1 (#A63AA8) a razão é cerca de 1,96:1 e contra a parada 2 (#FF7E4A) cerca de 1,12:1. Só o contorno na tinta sustenta a leitura, e os pares testados cobrem rosa-letreiro apenas sobre a parada 0 e sobre a tinta.",
+            "correcao": "Testar o par da linha 2 sobre as paradas em que ela realmente cai, ou documentar que a legibilidade vem do contorno (rosa/tinta) e conferir no PNG."
+          },
+          {
+            "verificacao": "S-03",
+            "regra": "DUP-04",
+            "classificacao": "duvida",
+            "severidade": "baixa",
+            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/peca.py",
+            "linha": 19,
+            "evidencia": "PARES_USADOS = ((\"branco\", \"painel-letreiro\"), (\"rosa-valor\", \"painel-letreiro\"),",
+            "explicacao": "A lista de pares usados repete (em código) os pares declarados em contraste.pares dos tokens; são duas definições para o mesmo contrato, ligadas só por checar_pares.",
+            "correcao": "Derivar a lista da peça dos tokens (por exemplo marcar o uso em contraste.pares) em vez de manter outra cópia."
+          },
+          {
+            "verificacao": "S-07",
+            "regra": "DUP-05",
+            "classificacao": "duvida",
+            "severidade": "baixa",
+            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/cn/peca.py",
+            "linha": 65,
+            "evidencia": "c = lambda n: tk.cor(t, n)  # noqa: E731",
+            "explicacao": "Este atalho já aparece em banner.py:16, temas.py:36/45/54 e duas vezes em peca.py, acima da regra de três.",
+            "correcao": "Extrair um helper único em cn/tokens.py e reusar."
+          }
+        ],
+        "candidate_skill": {
+          "name": "atalho-cor-tokens",
+          "reason": "DUP-05",
+          "proposed_path": ".agents/skills/atalho-cor-tokens/SKILL.md"
+        },
+        "resumo": "Camada A ok (peca, tema carrossel, validar, ruff). Sem marca, hex fora dos tokens ou Pricedown; contorno claro só no painel. Pendências: 4:5 fora da Regra 15 sem divergência declarada, contraste do título na linha 2 sem teste, duplicação de pares e do atalho de cor. Conferência visual do PNG (Regra 11) não foi refeita por esta estação."
+      }
     }
   ]
 }
