@@ -9,6 +9,7 @@ Uso:
   uv run costa_neon.py tokens build [--checar]
   uv run costa_neon.py validar [caminhos...] [--json]
   uv run costa_neon.py tema carrossel|video|readme|forge-sdd|todos --saida <pasta> [--previa] [--validar] [--json]
+  uv run costa_neon.py render amostra --saida <pasta> [--linha1 X] [--linha2 Y] [--json]
   uv run costa_neon.py prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
@@ -22,7 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from cn import css, prompt, temas, validar  # noqa: E402
+from cn import css, entrada, letreiro, prompt, render, temas, validar  # noqa: E402
 from cn import tokens as tk  # noqa: E402
 from cn.entrada import ErroDados, pasta_saida  # noqa: E402
 
@@ -84,6 +85,21 @@ def cmd_tema(a: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_render(a: argparse.Namespace) -> int:
+    t = tk.carregar()
+    saida = pasta_saida(a.saida)
+    l1, l2 = entrada.texto("linha1", a.linha1, 24), entrada.texto("linha2", a.linha2, 24)
+    html, png = saida / "amostra-letreiro.html", saida / "amostra-letreiro.png"
+    saida.mkdir(parents=True, exist_ok=True)
+    html.write_text(letreiro.amostra(t, l1, l2), encoding="utf-8", newline="\n")
+    tamanho = render.png(html, png, 1080, 640)
+    if a.json:
+        print(json.dumps({"ok": True, "png": str(png), "tamanho": tamanho}, ensure_ascii=False))
+    else:
+        print(f"ok: {png} {tamanho[0]}x{tamanho[1]}")
+    return 0
+
+
 def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="costa_neon.py", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="comando", required=True)
@@ -102,6 +118,13 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--validar", action="store_true", help="só lista o que seria gravado")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_tema)
+    p = sub.add_parser("render", help="renderiza uma página HTML dos tokens em PNG no Chrome local")
+    p.add_argument("alvo", choices=["amostra"])
+    p.add_argument("--saida", required=True, help="pasta de saída (só ela é escrita)")
+    p.add_argument("--linha1", default="Nova missão")
+    p.add_argument("--linha2", default="desbloqueada")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_render)
     p = sub.add_parser("prompt", help="monta o prompt de imagem ou o roteiro de texto (6 modos)")
     p.add_argument("--modo", type=int, required=True, choices=range(1, 7))
     p.add_argument("--semente", type=int)

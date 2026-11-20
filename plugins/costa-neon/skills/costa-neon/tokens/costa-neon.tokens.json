@@ -167,6 +167,10 @@
     "rosa-letreiro": {
       "valor": "#FF5CB4",
       "uso": "letreiro: faixa de chamada e linha 2 do título"
+    },
+    "roxo-sombra": {
+      "valor": "#4A2C9A",
+      "uso": "letreiro: sombra dura roxa do título"
     }
   },
   "degrades": {
@@ -259,7 +263,9 @@
           400
         ],
         "pilha": "'Bowlby One', 'Arial Black', Impact, sans-serif",
-        "uso": "menu, abas, dinheiro, títulos de impacto; branco com contorno de 2 a 3px na tinta"
+        "uso": "menu, abas, dinheiro, títulos de impacto; branco com contorno de 2 a 3px na tinta",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v25"
       },
       "texto": {
         "fonte": "Josefin Sans",
@@ -271,7 +277,9 @@
           700
         ],
         "pilha": "'Josefin Sans', Outfit, 'Century Gothic', system-ui, sans-serif",
-        "uso": "texto e títulos de tela"
+        "uso": "texto e títulos de tela",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v34"
       },
       "texto-alternativa": {
         "fonte": "Outfit",
@@ -283,7 +291,9 @@
           700
         ],
         "pilha": "Outfit, system-ui, sans-serif",
-        "uso": "alternativa ao texto"
+        "uso": "alternativa ao texto",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v15"
       },
       "script": {
         "fonte": "Kaushan Script",
@@ -292,7 +302,9 @@
           400
         ],
         "pilha": "'Kaushan Script', 'Brush Script MT', cursive",
-        "uso": "rótulo de seção sobre onda lilás"
+        "uso": "rótulo de seção sobre onda lilás",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v19"
       },
       "slab": {
         "fonte": "Zilla Slab",
@@ -303,7 +315,9 @@
           700
         ],
         "pilha": "'Zilla Slab', Rockwell, Georgia, serif",
-        "uso": "título de prancha"
+        "uso": "título de prancha",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v12"
       },
       "gigante": {
         "fonte": "Anton",
@@ -312,7 +326,9 @@
           400
         ],
         "pilha": "Anton, Impact, sans-serif",
-        "uso": "título gigante condensado"
+        "uso": "título gigante condensado; display do letreiro (estilo titulo-letreiro)",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v27"
       },
       "hud": {
         "fonte": "Oswald",
@@ -323,7 +339,9 @@
           600
         ],
         "pilha": "Oswald, 'Arial Narrow', sans-serif",
-        "uso": "rótulos de roda e HUD"
+        "uso": "rótulos de roda e HUD",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v57"
       },
       "mono": {
         "fonte": "JetBrains Mono",
@@ -334,7 +352,21 @@
           700
         ],
         "pilha": "'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace",
-        "uso": "código nos temas consumidores"
+        "uso": "código nos temas consumidores",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v24"
+      },
+      "letreiro-corpo": {
+        "fonte": "Barlow Condensed",
+        "fontsource": "barlow-condensed",
+        "pesos": [
+          600,
+          700
+        ],
+        "pilha": "'Barlow Condensed', 'Arial Narrow', sans-serif",
+        "uso": "letreiro: corpo dos painéis, chips e rodapé; números em 700",
+        "licenca": "OFL-1.1",
+        "versao-fontsource": "v13"
       }
     },
     "escala-px": {
@@ -356,7 +388,24 @@
     "display-contorno-px": [
       2,
       3
-    ]
+    ],
+    "estilos": {
+      "titulo-letreiro": {
+        "familia": "gigante",
+        "contorno": "tinta",
+        "contorno-px": [
+          3,
+          4
+        ],
+        "sombra": "titulo-letreiro",
+        "inclinacao-graus": -3,
+        "linha-1": "branco",
+        "linha-2": "rosa-letreiro",
+        "espacamento": "0.02em",
+        "entrelinha": 0.95,
+        "uso": "título do letreiro: duas linhas, a 1 branca e a 2 rosa-letreiro, contorno na tinta e sombra dura roxa"
+      }
+    }
   },
   "espacamento": {
     "base-px": 8,
@@ -382,6 +431,10 @@
     "neon": {
       "valor": "0 0 8px #FF8484",
       "uso": "brilho da linha neon (mesma cor)"
+    },
+    "titulo-letreiro": {
+      "valor": "4px 4px 0 #4A2C9A",
+      "uso": "sombra dura roxa do título do letreiro"
     }
   },
   "efeitos": {
@@ -456,6 +509,11 @@
       {
         "texto": "branco",
         "fundo": "ceu-letreiro:1",
+        "papel": "titulo"
+      },
+      {
+        "texto": "rosa-letreiro",
+        "fundo": "ceu-letreiro:0",
         "papel": "titulo"
       }
     ],

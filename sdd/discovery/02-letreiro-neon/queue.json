@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-20T10:57:24Z",
+  "updated_at": "2026-11-20T10:59:46Z",
   "items": [
     {
       "task_id": "02-01",
@@ -22,7 +22,7 @@
       "task_id": "02-02",
       "title": "feat-02-02-tipografia-letreiro — Tipografia de letreiro",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-02-tipografia-letreiro.md",
-      "status": "queued",
+      "status": "review_pending",
       "rules": [
         "SEG-07",
         "DUP-04",
@@ -30,7 +30,7 @@
         "GOV-01"
       ],
       "skills_used": [],
-      "attempts": 0
+      "attempts": 1
     },
     {
       "task_id": "02-03",

@@ -41,6 +41,7 @@
   --cn-cor-painel-letreiro: #16101F;
   --cn-cor-contorno-painel: #F6D9A8;
   --cn-cor-rosa-letreiro: #FF5CB4;
+  --cn-cor-roxo-sombra: #4A2C9A;
   --cn-degrade-sunset: linear-gradient(90deg, #FEB56B 0%, #FF9087 25%, #FA778B 50%, #C0638F 75%, #A56F9A 100%);
   --cn-degrade-acento: linear-gradient(90deg, #FDBB6C 0%, #FE7688 50%, #E8519E 100%);
   --cn-degrade-neon: linear-gradient(90deg, #FBAE73 0%, #FF8484 50%, #EF60A2 100%);
@@ -57,6 +58,7 @@
   --cn-fonte-gigante: Anton, Impact, sans-serif;
   --cn-fonte-hud: Oswald, 'Arial Narrow', sans-serif;
   --cn-fonte-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --cn-fonte-letreiro-corpo: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   --cn-tamanho-titulo-tela: 50px;
   --cn-tamanho-corpo: 22px;
   --cn-tamanho-item-menu: 48px;
@@ -70,6 +72,10 @@
   --cn-titulo-espacamento: 0.04em;
   --cn-corpo-entrelinha: 1.35;
   --cn-display-contorno: 2px;
+  --cn-titulo-letreiro-contorno: 4px;
+  --cn-titulo-letreiro-inclinacao: -3deg;
+  --cn-titulo-letreiro-espacamento: 0.02em;
+  --cn-titulo-letreiro-entrelinha: 0.95;
   --cn-espaco-base: 8px;
   --cn-margem-lateral: 4%;
   --cn-barra-altura: 9%;
@@ -81,6 +87,7 @@
   --cn-sombra-apresentacao: 0 40px 80px rgba(44,12,48,0.45);
   --cn-sombra-rotulo: 2px 2px 0 #49283E;
   --cn-sombra-neon: 0 0 8px #FF8484;
+  --cn-sombra-titulo-letreiro: 4px 4px 0 #4A2C9A;
   --cn-neon-espessura: 3px;
   --cn-neon-brilho: 8px;
   --cn-painel-opacidade-min: 0.55;
