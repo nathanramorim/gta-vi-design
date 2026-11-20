@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-20T12:17:01Z",
+  "updated_at": "2026-11-20T12:54:37Z",
   "items": [
     {
       "task_id": "02-01",
@@ -65,7 +65,7 @@
       "task_id": "02-04",
       "title": "feat-02-04-peca-de-letreiro — Peça de letreiro (cartaz e post)",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-04-peca-de-letreiro.md",
-      "status": "review_pending",
+      "status": "approved",
       "rules": [
         "TST-01",
         "DUP-03",
@@ -75,32 +75,9 @@
       "skills_used": [],
       "attempts": 1,
       "governance_verdict": {
-        "veredito": "duvida",
-        "achados": [
-          {
-            "verificacao": "S-05",
-            "regra": "Regra 15",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/scripts/costa_neon.py",
-            "linha": 13,
-            "evidencia": "[--formato 16:9|1:1|9:16]",
-            "explicacao": "A Ajuda do prompt (e SKILL.md linha 18) ainda lista 3 formatos, mas entrada.formato e a Regra 15 (ADR-0008) agora aceitam 4:5. A ADR-0008 prevê alinhar entrada e prompt.",
-            "correcao": "Incluir 4:5 na Ajuda do prompt e no SKILL.md linha 18."
-          },
-          {
-            "verificacao": "S-03",
-            "regra": "DUP-04",
-            "classificacao": "duvida",
-            "severidade": "baixa",
-            "arquivo": "plugins/costa-neon/skills/costa-neon/tokens/costa-neon.tokens.json",
-            "linha": 459,
-            "evidencia": "\"formatos\": [ \"16:9\", \"1:1\", \"9:16\" ]",
-            "explicacao": "A lista de formatos dos tokens não tem 4:5, enquanto entrada.FORMATOS tem quatro; duas definições divergentes do mesmo conjunto. Não há leitor em código, então o impacto é só documental.",
-            "correcao": "Incluir 4:5 em tokens.formatos (ou derivar entrada.FORMATOS dos tokens)."
-          }
-        ],
-        "resumo": "Camada A ok (gate 0, validar 0, ruff ok, 114 testes). Achados r1 tratados: ADR-0008 e Regra 15 registram o 4:5 e entrada.py o aceita; título sobre faixa escura painel-letreiro com testes dos pares reais e sem par sobre o céu; PARES_USADOS removido (pares lidos dos tokens); atalho único tk.cor_de. Restam só resíduos baixos de documentação com 3 formatos (Ajuda, SKILL.md, tokens.formatos). Nota: decisions.md lista a linha 10 antes da 8 (cosmético). Conferência visual do PNG com a faixa nova não refeita por esta estação."
+        "veredito": "conforme",
+        "achados": [],
+        "resumo": "Os dois residuos baixos do r2 foram tratados no commit 1c82a2d. A Ajuda do prompt e o SKILL.md listam 4:5, e tokens.formatos inclui 4:5. A ordem do decisions.md foi arrumada. Camada A ok: gate 0, ruff ok, 114 testes, validar 0, tokens build --checar ok."
       }
     }
   ]
