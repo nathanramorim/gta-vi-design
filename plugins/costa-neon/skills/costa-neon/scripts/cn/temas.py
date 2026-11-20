@@ -21,6 +21,15 @@ def _j(dado: dict) -> str:
     return json.dumps(dado, ensure_ascii=False, indent=2) + "\n"
 
 
+def letreiro(t: dict) -> dict:
+    """Cores, degradê e fontes do letreiro (02): chaves extras que os consumidores ignoram até quererem a peça de letreiro."""
+    fam = t["tipografia"]["familias"]
+    estilo = t["tipografia"]["estilos"]["titulo-letreiro"]
+    cores = {"lima": "lima-destaque", "painel": "painel-letreiro", "contorno-painel": "contorno-painel", "rosa": "rosa-letreiro", "sombra": "roxo-sombra"}
+    return {"cores": {k: tk.cor(t, n) for k, n in cores.items()}, "ceu": tk.paradas(t, "ceu-letreiro"), "contorno-titulo": tk.cor(t, estilo["contorno"]),
+            "fontes": {"titulo": fam[estilo["familia"]]["fonte"], "corpo": fam["letreiro-corpo"]["fonte"]}}
+
+
 def marca(t: dict, logo_em: str = "marca/logo.svg") -> dict:
     """Arquivo de marca do carrossel-studio e do gerador-videos (mesmos papéis). `logo_em` é relativo a quem lê."""
     fam = t["tipografia"]["familias"]
@@ -28,7 +37,8 @@ def marca(t: dict, logo_em: str = "marca/logo.svg") -> dict:
     return {"cores": {"bg": c("preto-barra"), "surface": c("chip-escuro"), "text": c("branco"), "muted": c("rosa-valor"),
                       "accent": tk.paradas(t, "acento")[1], "accent2": c("laranja-selecao"), "success": c("mapa-parque"),
                       "danger": c("atributo-perda")},
-            "fontes": {papel: fam[f]["fonte"] for papel, f in PAPEIS_FONTE_MARCA.items()}, "logo": logo_em}
+            "fontes": {papel: fam[f]["fonte"] for papel, f in PAPEIS_FONTE_MARCA.items()}, "logo": logo_em,
+            "letreiro": letreiro(t)}
 
 
 def identidade(t: dict) -> dict:
@@ -47,8 +57,9 @@ def forge_sdd(t: dict) -> dict:
             "missoes": [{"n": i, "estacao": e, "titulo": ti, "cor": c(cor)} for i, (e, ti, cor) in enumerate(MISSOES, 1)],
             "cores": {"fundo": c("preto-barra"), "texto": c("branco"), "suave": c("rosa-valor"), "contorno": c("tinta"),
                       "painel": c("chip-escuro"), "destaque": c("laranja-selecao")},
-            "degrades": {k: tk.degrade_css(t, k) for k in ("sunset", "acento", "neon", "sol", "ceu")},
-            "fontes": {k: fam[k]["fonte"] for k in ("display", "texto", "script", "gigante", "hud", "mono")},
+            "letreiro": letreiro(t),
+            "degrades": {k: tk.degrade_css(t, k) for k in ("sunset", "acento", "neon", "sol", "ceu", "ceu-letreiro")},
+            "fontes": {k: fam[k]["fonte"] for k in ("display", "texto", "script", "gigante", "hud", "mono", "letreiro-corpo")},
             "regras": ["Homenagem ao clima, sem logo, letreiro, personagem, mapa, interface ou fonte de obra existente.",
                        "Letreiro em Bowlby One branca com contorno na tinta, sobre o sol listrado.",
                        "Uma peça, um destaque: só um item com o degradê de acento por vez."],

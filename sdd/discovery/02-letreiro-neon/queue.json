@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-20T11:02:07Z",
+  "updated_at": "2026-11-20T11:08:23Z",
   "items": [
     {
       "task_id": "02-01",
@@ -50,7 +50,7 @@
       "task_id": "02-04",
       "title": "feat-02-04-peca-de-letreiro — Peça de letreiro (cartaz e post)",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-04-peca-de-letreiro.md",
-      "status": "queued",
+      "status": "review_pending",
       "rules": [
         "TST-01",
         "DUP-03",
@@ -58,7 +58,7 @@
         "ARQ-06"
       ],
       "skills_used": [],
-      "attempts": 0
+      "attempts": 1
     }
   ]
 }

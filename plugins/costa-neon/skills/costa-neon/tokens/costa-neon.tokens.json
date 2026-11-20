@@ -515,8 +515,18 @@
         "texto": "rosa-letreiro",
         "fundo": "ceu-letreiro:0",
         "papel": "titulo"
+      },
+      {
+        "texto": "branco",
+        "fundo": "tinta",
+        "papel": "titulo"
+      },
+      {
+        "texto": "rosa-letreiro",
+        "fundo": "tinta",
+        "papel": "titulo"
       }
     ],
-    "uso": "pares texto/fundo do letreiro; o título fica na metade de cima do céu (paradas 0 e 1)"
+    "uso": "pares texto/fundo do letreiro; o título fica na metade de cima do céu (paradas 0 e 1) e o contorno na tinta o separa do fundo"
   }
 }

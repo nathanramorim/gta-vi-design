@@ -9,7 +9,7 @@ Uso:
   uv run costa_neon.py tokens build [--checar]
   uv run costa_neon.py validar [caminhos...] [--json]
   uv run costa_neon.py tema carrossel|video|readme|forge-sdd|todos --saida <pasta> [--previa] [--validar] [--json]
-  uv run costa_neon.py render amostra --saida <pasta> [--linha1 X] [--linha2 Y] [--json]
+  uv run costa_neon.py render amostra|peca --saida <pasta> [--formato 4:5|1:1|todos] [--semente N] [--titulo1 X ...] [--json]
   uv run costa_neon.py prompt --modo 1..6 | --cena letreiro [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
@@ -23,7 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from cn import css, entrada, letreiro, prompt, render, temas, validar  # noqa: E402
+from cn import css, entrada, letreiro, peca, prompt, render, temas, validar  # noqa: E402
 from cn import tokens as tk  # noqa: E402
 from cn.entrada import ErroDados, pasta_saida  # noqa: E402
 
@@ -99,6 +99,8 @@ def cmd_tema(a: argparse.Namespace) -> int:
 def cmd_render(a: argparse.Namespace) -> int:
     t = tk.carregar()
     saida = pasta_saida(a.saida)
+    if a.alvo == "peca":
+        return _render_peca(a, t, saida)
     l1, l2 = entrada.texto("linha1", a.linha1, 24), entrada.texto("linha2", a.linha2, 24)
     html, png = saida / "amostra-letreiro.html", saida / "amostra-letreiro.png"
     saida.mkdir(parents=True, exist_ok=True)
@@ -108,6 +110,24 @@ def cmd_render(a: argparse.Namespace) -> int:
         print(json.dumps({"ok": True, "png": str(png), "tamanho": tamanho}, ensure_ascii=False))
     else:
         print(f"ok: {png} {tamanho[0]}x{tamanho[1]}")
+    return 0
+
+
+def _render_peca(a: argparse.Namespace, t: dict, saida: Path) -> int:
+    conteudo = {k: prompt.limpar(k, getattr(a, k.replace("-", "_")) or v, 24 if k.startswith("titulo") or k == "valor" else 80)
+                for k, v in peca.CONTEUDO.items()}
+    formatos = list(peca.FORMATOS) if a.formato == "todos" else [a.formato]
+    semente = a.semente if a.semente is not None else 1
+    saida.mkdir(parents=True, exist_ok=True)
+    feitos = []
+    for f in formatos:
+        nome = f"peca-{f.replace(':', 'x')}"
+        (saida / f"{nome}.html").write_text(peca.pagina(t, f, conteudo, semente), encoding="utf-8", newline="\n")
+        feitos.append({"png": str(saida / f"{nome}.png"), "tamanho": render.png(saida / f"{nome}.html", saida / f"{nome}.png", *peca.FORMATOS[f])})
+    if a.json:
+        print(json.dumps({"ok": True, "semente": semente, "pecas": feitos}, ensure_ascii=False))
+    else:
+        print("\n".join(f"ok: {p['png']} {p['tamanho'][0]}x{p['tamanho'][1]}" for p in feitos))
     return 0
 
 
@@ -130,7 +150,11 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_tema)
     p = sub.add_parser("render", help="renderiza uma página HTML dos tokens em PNG no Chrome local")
-    p.add_argument("alvo", choices=["amostra"])
+    p.add_argument("alvo", choices=["amostra", "peca"])
+    p.add_argument("--formato", choices=[*peca.FORMATOS, "todos"], default="todos", help="peca: 4:5 (1080x1350), 1:1 (1080x1080) ou todos")
+    p.add_argument("--semente", type=int, help="peca: semente do fundo (padrão 1)")
+    for nome in peca.CONTEUDO:
+        p.add_argument(f"--{nome}", help=f"peca: texto de {nome} (tem padrão fictício)")
     p.add_argument("--saida", required=True, help="pasta de saída (só ela é escrita)")
     p.add_argument("--linha1", default="Nova missão")
     p.add_argument("--linha2", default="desbloqueada")

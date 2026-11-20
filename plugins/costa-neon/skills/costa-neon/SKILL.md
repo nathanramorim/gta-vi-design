@@ -19,6 +19,8 @@ Design system replicável. Você **não escreve hex nem CSS à mão**: chama o s
 
 Modos do `prompt`: 1 design system, 2 personagem por foto (só com `--foto-autorizada`), 3 personagem aleatório, 4 cenário, 5 escrita (`--tipo`), 6 imagem temática (`--tema`, `--descricao`). `prompt --cena letreiro --semente N` monta o fundo de peça (moldura de silhuetas, sem texto na imagem). Detalhes em `ilustracao/GUIA.md`.
 
+Peça de letreiro: `render peca --saida <pasta> [--formato 4:5|1:1|todos] [--semente N]` gera o PNG (1080x1350 e 1080x1080) com título, 2 painéis, faixa de chamada e rodapé sobre fundo SVG próprio; `render amostra` mostra só o título. Precisa do Chrome local (`COSTA_NEON_CHROME` aponta outro).
+
 ## Como trabalhar
 1. Pegue `{MARCA}`, `{CIDADE}`, `{IDIOMA}` e `{FORMATO}` da pessoa; sem resposta, use os padrões do `tokens.json` (nomes fictícios).
 2. Rode o comando. Com `--previa`, abra o `previa-<consumidor>.svg` (ou um PNG dele) e **olhe** antes de entregar.
