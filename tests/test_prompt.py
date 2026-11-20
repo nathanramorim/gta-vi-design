@@ -77,3 +77,50 @@ def test_so_hex_dos_tokens(cli, tokens):
         extra = ("--foto-autorizada",) if modo == "2" else ()
         texto = gerar(cli, "--modo", modo, "--semente", "1", *extra)[1]["texto"]
         assert {h.upper() for h in re.findall(r"#[0-9A-Fa-f]{6}", texto)} <= permitidos
+
+
+# 02-03: --cena letreiro
+def cena(cli, *args):
+    return gerar(cli, "--cena", "letreiro", *args)
+
+
+def test_cena_letreiro_e_deterministica_e_varia(cli):
+    a, b = cena(cli, "--semente", "5")[1]["texto"], cena(cli, "--semente", "5")[1]["texto"]
+    assert a == b
+    assert len({cena(cli, "--semente", str(s))[1]["texto"] for s in range(8)}) >= 6
+
+
+def test_cena_letreiro_usa_o_estilo_a_lista_e_nao_pede_texto(cli):
+    r, d = cena(cli, "--semente", "5")
+    assert r.returncode == 0 and d["modo"] == 6
+    assert d["texto"].startswith(prompt.estilo()) and "{" not in d["texto"]
+    assert "No text, no letters, no numbers" in d["texto"] and "unreadable" in d["texto"]
+    assert not re.search(r"\b(title text|headline|caption|write|reading)\b", d["texto"].split("Poster background plate")[1], re.IGNORECASE)
+    listas = json.loads((prompt.PASTA / "cenario-letreiro.json").read_text(encoding="utf-8"))
+    assert all(d["valores"][k] in listas[k] for k in listas)
+
+
+def test_cena_letreiro_sem_termo_bloqueado_e_so_hex_dos_tokens(cli, tokens):
+    from cn import termos
+    for s in range(20):
+        texto = cena(cli, "--semente", str(s))[1]["texto"]
+        assert not termos.achar(texto.split("Poster background plate")[1])
+        assert {h.upper() for h in re.findall(r"#[0-9A-Fa-f]{6}", texto)} <= tk.hex_permitidos(tokens)
+    assert set(tokens["degrades"]["ceu-letreiro"]["paradas"]) <= set(re.findall(r"#[0-9A-F]{6}", cena(cli)[1]["texto"]))
+
+
+@pytest.mark.parametrize("args", [
+    ("--cena", "inexistente"),
+    ("--cena", "letreiro", "--modo", "3"),
+    ("--cena", "letreiro", "--formato", "4:3"),
+    ("--cena", "letreiro", "--cidade", "Vice City"),
+    ("--cena", "letreiro", "--cidade", "<b>"),
+])
+def test_cena_invalida_sai_2(cli, args):
+    r, d = gerar(cli, *args)
+    assert r.returncode == 2 and d["ok"] is False
+
+
+def test_sem_modo_nem_cena_sai_2(cli):
+    r, d = gerar(cli)
+    assert r.returncode == 2 and "--modo" in d["erro"]

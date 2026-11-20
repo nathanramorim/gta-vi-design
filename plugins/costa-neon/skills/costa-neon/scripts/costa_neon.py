@@ -10,7 +10,7 @@ Uso:
   uv run costa_neon.py validar [caminhos...] [--json]
   uv run costa_neon.py tema carrossel|video|readme|forge-sdd|todos --saida <pasta> [--previa] [--validar] [--json]
   uv run costa_neon.py render amostra --saida <pasta> [--linha1 X] [--linha2 Y] [--json]
-  uv run costa_neon.py prompt --modo 1..6 [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
+  uv run costa_neon.py prompt --modo 1..6 | --cena letreiro [--semente N] [--formato 16:9|1:1|9:16] [--marca X] [--cidade Y] [--json]
 
 Códigos: 0 ok; 1 CSS desatualizado (--checar); 2 dado inválido ou problema encontrado.
 """
@@ -62,8 +62,19 @@ def cmd_prompt(a: argparse.Namespace) -> int:
     variaveis = {"SISTEMA": var["SISTEMA"], "MARCA": a.marca or var["MARCA"], "CIDADE": a.cidade or var["CIDADE"],
                  "IDIOMA": a.idioma or var["IDIOMA"], "FORMATO": var["FORMATO"]}
     fixos = {k: getattr(a, k) for k in ("pose", "roupa", "lugar", "hora", "lado", "arquetipo", "idade", "corpo", "cabelo", "acessorio", "pessoa")}
+    if a.cena:
+        if a.modo is not None:
+            raise ErroDados("use --cena ou --modo, não os dois")
+        r = prompt.montar_cena(a.cena, variaveis=variaveis, semente=a.semente, formato=a.formato)
+        return _saida_prompt(a, r)
+    if a.modo is None:
+        raise ErroDados("informe --modo (1 a 6) ou --cena letreiro")
     r = prompt.montar(a.modo, variaveis=variaveis, fixos=fixos, semente=a.semente, foto_autorizada=a.foto_autorizada,
                       tipo=a.tipo, tema=a.tema, descricao=a.descricao, formato=a.formato)
+    return _saida_prompt(a, r)
+
+
+def _saida_prompt(a: argparse.Namespace, r: prompt.Resultado) -> int:
     if a.json:
         print(json.dumps({"ok": True, **r.__dict__}, ensure_ascii=False))
         return 0
@@ -126,7 +137,8 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_render)
     p = sub.add_parser("prompt", help="monta o prompt de imagem ou o roteiro de texto (6 modos)")
-    p.add_argument("--modo", type=int, required=True, choices=range(1, 7))
+    p.add_argument("--modo", type=int, choices=range(1, 7))
+    p.add_argument("--cena", help="fundo de peça sem texto: letreiro (no lugar de --modo)")
     p.add_argument("--semente", type=int)
     p.add_argument("--formato")
     for nome in ("marca", "cidade", "idioma", "pose", "roupa", "lugar", "hora", "lado", "arquetipo", "idade", "corpo", "cabelo", "acessorio", "pessoa"):

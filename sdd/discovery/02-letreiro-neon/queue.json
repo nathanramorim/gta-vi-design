@@ -2,7 +2,7 @@
   "feature_id": "",
   "branch": "",
   "spec_status": "reviewed",
-  "updated_at": "2026-11-20T10:59:46Z",
+  "updated_at": "2026-11-20T11:02:07Z",
   "items": [
     {
       "task_id": "02-01",
@@ -36,7 +36,7 @@
       "task_id": "02-03",
       "title": "feat-02-03-fundos-e-cenarios — Fundos e cenários para imagem",
       "spec_path": "sdd/discovery/02-letreiro-neon/features/feat-02-03-fundos-e-cenarios.md",
-      "status": "queued",
+      "status": "review_pending",
       "rules": [
         "ARQ-06",
         "SEG-01",
@@ -44,7 +44,7 @@
         "DUP-03"
       ],
       "skills_used": [],
-      "attempts": 0
+      "attempts": 1
     },
     {
       "task_id": "02-04",
